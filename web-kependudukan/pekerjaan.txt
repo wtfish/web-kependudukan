@@ -1,4 +1,4 @@
-INSERT INTO pekerjaan VALUES
+INSERT INTO pekerjaans(deskripsi) VALUES
     ('BELUM/TIDAK BEKERJA'),
     ('MENGURUS RUMAH TANGGA'),
     ('PELAJAR/MAHASISWA'),

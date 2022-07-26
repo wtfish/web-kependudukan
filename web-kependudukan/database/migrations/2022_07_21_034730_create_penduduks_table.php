@@ -24,6 +24,11 @@ return new class extends Migration
             $table->integer("kelamin");
             $table->string("nama_ibu");
             $table->string("nama_ayah");
+            $table->string("status_penduduk_baru",10);
+            
+
+            //tidak wajib
+            $table->string("kemiskinan",50)->nullable();
             $table->date("tanggal_nikah")->nullable();
             $table->string("nomor_buku_nikah")->nullable();
             $table->string("kua",50)->nullable();

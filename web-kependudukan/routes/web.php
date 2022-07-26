@@ -52,17 +52,7 @@ Route::get('/data_penduduk', [PendudukController::class,"index"]);
 
 Route::get('/tambah', [PendudukController::class,"tampilTambah"]);
 Route::post('/tambah', [PendudukController::class,"tambah"]);
-
-// Route::post('/tambah', function () {
-//     return view('data_penduduk',[
-//         "title"=>"Data Penduduk"
-//     ]);
-// });
-Route::get('/detail', function () {
-    return view('detail',[
-        "title"=>"Detail penduduk"
-    ]);
-});
+Route::get('data_penduduk/detail/{penduduk:id}', [PendudukController::class,"show"]);
 
 Route::get('/detail_kk', function () {
     return view('detail_kk',[

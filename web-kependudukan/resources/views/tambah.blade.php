@@ -90,7 +90,7 @@
                 <div class="row my-3">
                     <div class="col-4 ">Jenis Kelamin</div>
                     <div class="col-8 ">
-                        <select style="width: 25%" id="inputGroupSelect01" required name="kelamin" class="form-select">
+                        <select style="width: 25%" id="inputGroupSelect01" required name="kelamin" class="form-select @error("kelamin") is-invalid @enderror" value="{{old("kelamin")}}">
                             <option selected disabled value="">Choose...</option>
                             <option value=1>Laki-Laki</option>
                             <option value=0>Perempuan</option>
@@ -128,7 +128,7 @@
                     <div class="col-4 ">RT</div>
                     <div class="col-8 ">
                         
-                        <select style="width: 25%" id="inputGroupSelect01" name="rt" class="form-select" required>
+                        <select style="width: 25%" id="inputGroupSelect01" name="rt" class="form-select @error("rt") is-invalid @enderror" required>
                             <option selected disabled value="">PILIH RT</option>
                             @foreach ($rt as $item)
                                 <option value="{{$item->id}}">{{$item->id}}</option>
@@ -141,8 +141,8 @@
                     <div class="col-4 ">Agama</div>
                     <div class="col-8 ">
                         
-                        <select style="width: 25%" id="inputGroupSelect01" name="agama" required class="form-select">
-                            <option selected disabled>PILIH AGAMA</option>
+                        <select style="width: 25%" id="inputGroupSelect01" name="agama" required class="form-select @error("agama") is-invalid @enderror">
+                            <option selected disabled value="">PILIH AGAMA</option>
                             @foreach ($agama as $item)
                                 <option value="{{$item->id}}">{{$item->deskripsi}}</option>
                             @endforeach
@@ -155,7 +155,7 @@
                     <div class="col-8 ">
                         
                         <select style="width: 25%" id="inputGroupSelect01" name="pendidikan" required class="form-select">
-                            <option selected disabled>PILIH PENDIDIKAN</option>
+                            <option selected disabled value="">PILIH PENDIDIKAN</option>
                             @foreach ($pendidikan as $item)
                                 <option value="{{$item->id}}">{{$item->deskripsi}}</option>
                             @endforeach
@@ -168,7 +168,7 @@
                     <div class="col-8 ">
                         
                         <select style="width: 25%" id="inputGroupSelect01" name="pekerjaan" required class="form-select">
-                            <option selected disabled>PILIH PEKERJAAN</option>
+                            <option selected disabled value="">PILIH PEKERJAAN</option>
                             @foreach ($pekerjaan as $item)
                                 <option value="{{$item->id}}">{{$item->deskripsi}}</option>
                             @endforeach
@@ -195,7 +195,7 @@
                     <div class="col-4 "><label for="status-perkawinan">Status Perkawinan</label></div>
                     <div class="col-8 ">
                         <select style="width: 25%" id="inputGroupSelect01" name="status_perkawinan" id="status-perkawinan" required class="form-select">
-                            <option selected disabled>PILIH STATUS</option>
+                            <option selected disabled value="">PILIH STATUS</option>
                             @foreach ($status as $item)
                                 <option value="{{$item->id}}">{{$item->deskripsi}}</option>
                             @endforeach>
@@ -206,7 +206,7 @@
                     <div class="col-4 "><label for="exampleRadios1">Status Penduduk Baru</label></div>
                     <div class="col-8 ">
                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_penduduk_baru" id="exampleRadios1" value="Baru">
+                            <input class="form-check-input" type="radio" name="status_penduduk_baru" id="exampleRadios1" value="Baru" required>
                             <label class="form-check-label" for="exampleRadios1">
                               Baru
                             </label>
