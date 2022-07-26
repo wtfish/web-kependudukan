@@ -64,6 +64,51 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
             <?php FunctionName(325, 'Perempuan',"fa-solid fa-venus"); ?>
             <?php FunctionName(29, 'Lahir',"fa-solid fa-face-smile"); ?>
             <?php FunctionName(20, 'Meninggal',"fa-solid fa-face-frown"); ?>
-
+            <div class="col-xl-12">
+                <div class="card mb-4 ">
+                    <div class="card-header">
+                        <i class="fas fa-chart-area me-1"></i>
+                        PENDIDIKAN
+                    </div>
+                    <div class="card-body"><canvas id="myChart" width="100%" height="40"></canvas></div>
+                </div>
+            </div>
         </div>
+        <br>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+          const labels = [
+            'Tamat SD',
+            'SLTP',
+            'SLTA',
+            'DIPLOMA I/II',
+            'AKADEMI/D III',
+            'DIPLOMA IV/STRATA I',
+            'STRATA II',
+            'STRATA III'
+          ];
+
+          const data = {
+            labels: labels,
+            datasets: [{
+              label: 'Jumlah warga Pendidikan',
+              backgroundColor: 'rgb(120,97,148)',
+              borderColor: 'rgb(120,97,148)',
+              color: 'rgb(240, 242, 250)' ,
+              data: [0, 10, 5, 2, 20, 30, 70,20],
+            }]
+          };
+
+          const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+          };
+        </script>
+        <script>
+          const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+          );
+        </script>
     @endsection
