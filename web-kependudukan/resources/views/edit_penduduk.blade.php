@@ -1,22 +1,17 @@
 @extends('layouts.main')
-<?php
- function tanggal(Type $var = null)
-{
-    # code...
-}
-?>
+
 @section('body')
     <div class="container ">
         <div class="content bg-white p-1">
-            <form action="/tambah" method="POST">
+            <form action="/data_penduduk/edit/{{$penduduk->id}}" method="POST">
 
                 @csrf
                 <div class="row">
-                    <div class="col-12 background text-black text-center p-1" style="">Data Penduduk (wajib diisi)</div>
+                    <div class="col-12 background text-black text-center p-1" style="">Edit data penduduk </div>
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label" for="nik">NIK</label></div>
-                    <div class="col-8"><input class="form-control @error("nik") is-invalid @enderror" id="nik" style="width: 50%" type="text" placeholder="NIK" name="nik" value="{{old("nik")}}"></div>
+                    <div class="col-8"><input class="form-control @error("nik") is-invalid @enderror" id="nik" style="width: 50%" type="text" placeholder="NIK" name="nik" value="{{$penduduk->nik}}"></div>
                     @error("nik")
                         <div class="col-4"></div>
                         <div class="col-4">
@@ -29,7 +24,7 @@
 
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label " for="kk">No KK</label></div>
-                    <div class="col-8 "><input class="form-control @error("kk") is-invalid @enderror" id="kk" style="width: 50%" type="text" placeholder="Nomer KK" name="kk"  value="{{old("kk")}}"></div>
+                    <div class="col-8 "><input class="form-control @error("kk") is-invalid @enderror" id="kk" style="width: 50%" type="text" placeholder="Nomer KK" name="kk"  value="{{$penduduk->kk}}"></div>
                     @error("kk")
                         <div class="col-4"></div>
                         <div class="col-4">
@@ -42,7 +37,7 @@
 
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label " for="validasi">Validasi</label></div>
-                    <div class="col-8 "><input class="form-control @error("validasi") is-invalid @enderror" id="validasi" style="width: 50%" type="text" placeholder="Validasi KK" name="validasi"  value="{{old("validasi")}}"></div>
+                    <div class="col-8 "><input class="form-control @error("validasi") is-invalid @enderror" id="validasi" style="width: 50%" type="text" placeholder="Validasi KK" name="validasi"  value="{{$penduduk->validasi}}"></div>
                     @error("validasi")
                         <div class="col-4"></div>
                         <div class="col-4">
@@ -55,7 +50,7 @@
 
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label " for="nama">Nama</label></div>
-                    <div class="col-8 "><input class="form-control @error("nama") is-invalid @enderror" id="nama" style="width: 50%" type="text" placeholder="Nama" name="nama"  value="{{old("nik")}}"></div>
+                    <div class="col-8 "><input class="form-control @error("nama") is-invalid @enderror" id="nama" style="width: 50%" type="text" placeholder="Nama" name="nama"  value="{{$penduduk->nama}}"></div>
                     @error("nama")
                         <div class="col-4"></div>
                         <div class="col-4">
@@ -69,8 +64,8 @@
                 <div class="row my-3">
                     <div class="col-4 form-label">TTL</div>
                     <div class="col-8">
-                        <input style="width: 25%" type="text" class="form-control @error("ttl-tempat") is-invalid @enderror" placeholder="Tempat lahir" name="ttl-tempat" value="{{old("ttl-tempat")}}">
-                        <input style="width: 25%" type="date" class="form-control @error("ttl-waktu") is-invalid @enderror" placeholder="Tanggal lahir" name="ttl-waktu" value="{{old("ttl-waktu")}}">
+                        <input style="width: 25%" type="text" class="form-control @error("ttl-tempat") is-invalid @enderror" placeholder="Tempat lahir" name="ttl-tempat" value="{{$penduduk->tempat_lahir}}">
+                        <input style="width: 25%" type="date" class="form-control @error("ttl-waktu") is-invalid @enderror" placeholder="Tanggal lahir" name="ttl-waktu" value="{{$penduduk->tanggal_lahir}}">
                         @error("ttl-tempat")
                             <div class="text-danger">
                                 <span class="text-danger">Tempat belum diisi! </span>
@@ -90,17 +85,18 @@
                 <div class="row my-3">
                     <div class="col-4 ">Jenis Kelamin</div>
                     <div class="col-8 ">
-                        <select style="width: 25%" id="inputGroupSelect01" required name="kelamin" class="form-select @error("kelamin") is-invalid @enderror" value="{{old("kelamin")}}">
-                            <option selected disabled value="">Choose...</option>
-                            <option value=1>Laki-Laki</option>
-                            <option value=0>Perempuan</option>
+                        <select style="width: 25%" id="inputGroupSelect01" required name="kelamin" class="form-select @error("kelamin") is-invalid @enderror" >
+                            <option selected disabled value="">PILIH KELAMIN</option>
+
+                            <option value=1 {{($penduduk->kelamin ==1 ? "selected" : "")}}>Laki-Laki</option>
+                            <option value=0 {{($penduduk->kelamin ==0 ? "selected" : "")}}>Perempuan</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label" for="nama_ayah">Nama Ayah</label></div>
-                    <div class="col-8"><input class="form-control @error("nama_ayah") is-invalid @enderror" id="nama_ayah" style="width: 50%" type="text" placeholder="Nama Ayah" name="nama_ayah" value="{{old("nama_ayah")}}"></div>
+                    <div class="col-8"><input class="form-control @error("nama_ayah") is-invalid @enderror" id="nama_ayah" style="width: 50%" type="text" placeholder="Nama Ayah" name="nama_ayah" value="{{$penduduk->nama_ayah}}"></div>
                     @error("nama_ayah")
                         <div class="col-4"></div>
                         <div class="col-4">
@@ -113,7 +109,7 @@
 
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label" for="nama_ibu">Nama Ibu</label></div>
-                    <div class="col-8"><input class="form-control @error("nama_ibu") is-invalid @enderror" id="nama_ibu" style="width: 50%" type="text" placeholder="Nama Ibu" name="nama_ibu" value="{{old("nama_ibu")}}"></div>
+                    <div class="col-8"><input class="form-control @error("nama_ibu") is-invalid @enderror" id="nama_ibu" style="width: 50%" type="text" placeholder="Nama Ibu" name="nama_ibu" value="{{$penduduk->nama_ibu}}"></div>
                     @error("nama_ibu")
                         <div class="col-4"></div>
                         <div class="col-4">
@@ -131,7 +127,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="rt" class="form-select @error("rt") is-invalid @enderror" required>
                             <option selected disabled value="">PILIH RT</option>
                             @foreach ($rt as $item)
-                                <option value="{{$item->id}}">{{$item->id}}</option>
+                                <option value="{{$item->id}}" {{($penduduk->rt->id ==$item->id ? "selected" : "")}} >{{$item->id}}</option>
                             @endforeach
 
                         </select>
@@ -144,7 +140,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="agama" required class="form-select @error("agama") is-invalid @enderror">
                             <option selected disabled value="">PILIH AGAMA</option>
                             @foreach ($agama as $item)
-                                <option value="{{$item->id}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->id}}" {{($penduduk->agama->id ==$item->id ? "selected" : "")}}>{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -157,7 +153,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="pendidikan" required class="form-select">
                             <option selected disabled value="">PILIH PENDIDIKAN</option>
                             @foreach ($pendidikan as $item)
-                                <option value="{{$item->id}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->id}}" {{($penduduk->pendidikan->id ==$item->id ? "selected" : "")}}>{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -170,7 +166,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="pekerjaan" required class="form-select">
                             <option selected disabled value="">PILIH PEKERJAAN</option>
                             @foreach ($pekerjaan as $item)
-                                <option value="{{$item->id}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->id}}" {{($penduduk->pekerjaan->id ==$item->id ? "selected" : "")}}>{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -184,7 +180,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="hubungan_keluarga" required class="form-select">
                             <option selected disabled value="">PILIH HUB-KELUARGA</option>
                             @foreach ($hubungan as $item)
-                                <option value="{{$item->id}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->id}}" {{($penduduk->hubungan_keluarga->id ==$item->id ? "selected" : "")}}>{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -197,7 +193,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="status_perkawinan" id="status-perkawinan" required class="form-select">
                             <option selected disabled value="">PILIH STATUS</option>
                             @foreach ($status as $item)
-                                <option value="{{$item->id}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->id}}" {{($penduduk->status->id ==$item->id ? "selected" : "")}}>{{$item->deskripsi}}</option>
                             @endforeach>
                         </select>
                     </div>
@@ -206,13 +202,13 @@
                     <div class="col-4 "><label for="exampleRadios1">Status Penduduk Baru</label></div>
                     <div class="col-8 ">
                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_penduduk_baru" id="exampleRadios1" value="Baru" required>
+                            <input class="form-check-input" type="radio" name="status_penduduk_baru" id="exampleRadios1" value="Baru" required {{($penduduk->status_penduduk_baru =="Baru" ? "checked" : "")}}>
                             <label class="form-check-label" for="exampleRadios1">
                               Baru
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_penduduk_baru" id="exampleRadios2" value="Pindah">
+                            <input class="form-check-input" type="radio" name="status_penduduk_baru" id="exampleRadios2" value="Pindah" {{($penduduk->status_penduduk_baru =="Pindah" ? "checked" : "")}}> 
                             <label class="form-check-label" for="exampleRadios2">
                               Pindah
                             </label>
@@ -227,7 +223,7 @@
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label" for="akte_kelahiran">Akte Kelahiran</label></div>
-                    <div class="col-8 "><input class="form-control" style="width: 50%" type="text" placeholder="Akte Kelahiran"name="akte_kelahiran" id="akte_kelahiran"></div>
+                    <div class="col-8 "><input class="form-control" style="width: 50%" type="text" placeholder="Akte Kelahiran"name="akte_kelahiran" id="akte_kelahiran" value="{{$penduduk->akte_kelahiran}}"></div>
                 </div>
                 <div class="row">
                     <div class="col-12 background text-black text-center " style="">Pernikahan</div>
@@ -235,19 +231,19 @@
                 <div class="row my-3">
                     <div class="col-4 "><label for="tanggal_nikah" class="form-label">Tanggal nikah</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="date" name="tanggal_nikah" class="form-control" id="tanggal_nikah">
+                        <input style="width: 50%" type="date" name="tanggal_nikah" class="form-control" id="tanggal_nikah" value="{{$penduduk->tanggal_nikah}}">
                     </div>
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label for="no_buku_nikah" class="form-label">No buku nikah</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="text" name="no_buku_nikah" class="form-control">
+                        <input style="width: 50%" type="text" name="no_buku_nikah" class="form-control" value="{{$penduduk->nomor_buku_nikah}}">
                     </div>
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label for="kua" class="form-label">KUA</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="text" name="kua" class="form-control">
+                        <input style="width: 50%" type="text" name="kua" class="form-control" value="{{$penduduk->kua}}">
                     </div>
                 </div>
                 <div class="row">
@@ -256,13 +252,13 @@
                 <div class="row my-3">
                     <div class="col-4 "><label for="tanggal_kematian" class="form-label">Tanggal Kematian</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="datetime-local" name="tanggal_kematian" class="form-control">
+                        <input style="width: 50%" type="datetime-local" name="tanggal_kematian" class="form-control" value="{{$penduduk->tanggal_kematian}}">
                     </div>
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label for="keterangan_kematian" class="form-label">Keterangan</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="text" name="keterangan_kematian" class="form-control">
+                        <input style="width: 50%" type="text" name="keterangan_kematian" class="form-control" value="{{$penduduk->keterangan_kematian}}">
                     </div>
                 </div>
                 <div class="row">
@@ -270,7 +266,7 @@
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label " for="kemiskinan">Keterangan</label></div>
-                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Keterangan kemiskinan" name="kemiskinan"  value="{{old("kemiskinan")}}"></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Keterangan kemiskinan" name="kemiskinan"  value="{{$penduduk->kemiskinan}}"></div>
                 </div>
 
         </div>

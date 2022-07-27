@@ -32,6 +32,7 @@ class PendudukFactory extends Factory
             "status_id"=>mt_rand(1,4),
             "pekerjaan_id"=>mt_rand(1,88),
             "rt_id"=>mt_rand(1,13),
+            "status_penduduk_baru"=>fake()->randomElement(["Pindah","Baru"]),
         ];
     }
 }

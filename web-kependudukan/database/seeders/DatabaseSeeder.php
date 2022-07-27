@@ -126,7 +126,7 @@ class DatabaseSeeder extends Seeder
             "deskripsi" => "BELUM KAWIN"
         ]);
         status_perkawinan::create([
-            "deskripsi" => "BELUM KAWIN"
+            "deskripsi" => "KAWIN"
         ]);
         status_perkawinan::create([
             "deskripsi" => "CERAI HIDUP"
@@ -202,7 +202,6 @@ class DatabaseSeeder extends Seeder
             "deskripsi" => "MULYOSARI"
         ]);
 
-        //
 
 
     }

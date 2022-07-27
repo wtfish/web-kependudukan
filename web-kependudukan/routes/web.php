@@ -47,12 +47,16 @@ Route::get('/data_kk', function () {
         "title"=>"Data Kartu Keluarga"
     ]);
 });
+//penduduk
 
 Route::get('/data_penduduk', [PendudukController::class,"index"]);
-
-Route::get('/tambah', [PendudukController::class,"tampilTambah"]);
+Route::get('/tambah', [PendudukController::class,"tampilTambah"]); 
 Route::post('/tambah', [PendudukController::class,"tambah"]);
+
 Route::get('data_penduduk/detail/{penduduk:id}', [PendudukController::class,"show"]);
+
+Route::get('data_penduduk/edit/{penduduk:id}', [PendudukController::class,"tampilEdit"]);
+Route::post('data_penduduk/edit/{penduduk:id}', [PendudukController::class,"edit"]);
 
 Route::get('/detail_kk', function () {
     return view('detail_kk',[
