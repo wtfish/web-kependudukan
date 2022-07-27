@@ -55,11 +55,14 @@
 
 
                     </a>
+                    <!---------- Tombol Dashboard ---------->
                             <a class="nav-link {{ $title==="Dashboard"? "active" : " "}}" href="/">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></div>
                                 Dashboard
                             </a>
+                    <!---------- /Tombol Dashboard ---------->
 
+                    <!---------- Kelola Data ---------->
                             <a class="nav-link collapsed " href="#1" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                                 Kelola Data
@@ -71,18 +74,24 @@
                                     <a class="nav-link" href="/data_penduduk">Data Penduduk</a>
                                 </nav>
                             </div>
+                    <!---------- /Kelola Data ---------->
 
-                            <a class="nav-link collapsed " href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                    <!---------- Sirkulasi Penduduk ---------->
+
+                            <a class="nav-link collapsed " href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-folder-closed"></i></div>
                                 Sirkulasi Penduduk
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/sirkulasi_penduduk">Kematian</a>
-                                    <a class="nav-link" href="/data_penduduk">Perpindahan</a>
+
+                            <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav" >
+                                    <a class="nav-link" href="/kematian">Kematian</a>
+                                    <a class="nav-link" href="/perpindahan">Perpindahan</a>
                                 </nav>
                             </div>
+
+                    <!---------- /Sirkulasi Penduduk ---------->
                             <a class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-image"></i></div>
                                 Kelola Surat
@@ -152,7 +161,7 @@
                 </footer>
             </div>
         </div>
-        
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

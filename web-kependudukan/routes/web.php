@@ -66,9 +66,5 @@ Route::get('/kematian', function () {
     ]);
 });
 Route::get('/perpindahan', [PendudukController::class,"index"]);
-Route::get('/sirkulasi_penduduk', function () {
-    return view('sirkulasi_penduduk',[
-        "title"=>"sirkulasi penduduk"
-    ]);
-});
+
 
