@@ -21,7 +21,7 @@ class PendudukController extends Controller
             'data_penduduk',
             [
                 "title" => "Data Penduduk",
-                "penduduks" => Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->get()
+                "penduduks" => Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNotIn("status_penduduk_baru",["Keluar"])->whereNull("tanggal_kematian")->whereNull("keterangan_kematian")->get()
             ]
         );
     }
@@ -86,13 +86,7 @@ class PendudukController extends Controller
             "kemiskinan" => $request["kemiskinan"]
 
         ]);
-        return view(
-            'data_penduduk',
-            [
-                "title" => "Data Penduduk",
-                "penduduks" => Penduduk::all()
-            ]
-        );
+        return redirect()->route("penduduk");
 
         // dd($validatedData,$request);
     }
@@ -163,6 +157,42 @@ class PendudukController extends Controller
             "keterangan_kematian" => $request["keterangan_kematian"],
             "kemiskinan" => $request["kemiskinan"]
         ]);
-        dd($validatedData);
+         return redirect()->route("penduduk");
+    }
+    public function keluar(Penduduk $penduduk){
+        Penduduk::where("id",$penduduk->id)->update([
+            "status_penduduk_baru"=>"Keluar"
+        ]);
+        return redirect()->route("penduduk");
+    }
+    public function tampilKeluar(){
+        // dd( Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereIn("status_penduduk_baru",["Keluar"])->get());
+        return view("keluar",[
+            "title"=>"Penduduk Keluar",
+            "penduduks"=>Penduduk::where("status_penduduk_baru","Keluar")->get()
+        ]);
+        
+    }
+    public function tampilKematian(){
+        // dd(Penduduk::where('tanggal_kematian', '<>',"")->orWhere('keterangan_kematian', '<>',"")->get());
+        return view('kematian',[
+            "title"=>"Penduduk Meninggal",
+            "penduduks"=>Penduduk::where('tanggal_kematian', '<>',"")->orWhere('keterangan_kematian', '<>',"")->get()
+        ]);
+    }
+
+    public function tampilPindah(){
+        // dd(Penduduk::where('tanggal_kematian', '<>',"")->orWhere('keterangan_kematian', '<>',"")->get());
+        return view('pindah',[
+            "title"=>"Penduduk Pindah",
+            "penduduks"=>Penduduk::where("status_penduduk_baru","Pindah")->get()
+        ]);
+    }
+    public function undoKematian(Penduduk $penduduk){
+        $penduduk->tanggal_kematian=null;
+        $penduduk->keterangan_kematian=null;
+
+        $penduduk->save();
+        return redirect()->route("penduduk");
     }
 }

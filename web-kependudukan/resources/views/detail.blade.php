@@ -109,7 +109,7 @@
 
     <div class="row border-bottom">
         <div class="col-4 ">Keterangan</div>
-        <div class="col-8 ">: {{($penduduk->Kemiskinan == ""? "-" : $penduduk->Kemiskinan)}}</div>
+        <div class="col-8 ">: {{($penduduk->kemiskinan == "" ? "-" : $penduduk->kemiskinan)}}</div>
     </div>
     
 

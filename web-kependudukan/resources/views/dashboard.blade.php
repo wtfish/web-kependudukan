@@ -30,7 +30,7 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
             <div class="col my-3">
               <div class="card">
                 <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle bg-white text-dark" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle bg-white text-dark" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" name="rt">
                       RT
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
@@ -44,7 +44,7 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
             <div class="col my-3 ">
               <div class="card">
                 <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle bg-white text-dark" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle bg-white text-dark" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" name="rw">
                       RW
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="defaultDropdown">

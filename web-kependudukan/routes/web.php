@@ -49,7 +49,7 @@ Route::get('/data_kk', function () {
 });
 //penduduk
 
-Route::get('/data_penduduk', [PendudukController::class,"index"]);
+Route::get('/data_penduduk', [PendudukController::class,"index"])->name("penduduk");
 Route::get('/tambah', [PendudukController::class,"tampilTambah"]); 
 Route::post('/tambah', [PendudukController::class,"tambah"]);
 
@@ -58,17 +58,20 @@ Route::get('data_penduduk/detail/{penduduk:id}', [PendudukController::class,"sho
 Route::get('data_penduduk/edit/{penduduk:id}', [PendudukController::class,"tampilEdit"]);
 Route::post('data_penduduk/edit/{penduduk:id}', [PendudukController::class,"edit"]);
 
-Route::get('/detail_kk', function () {
-    return view('detail_kk',[
-        "title"=>"Detail Kartu Keluarga"
-    ]);
-});
+Route::get('data_penduduk/keluar/{penduduk:id}', [PendudukController::class,"keluar"]);
 
-Route::get('/kematian', function () {
-    return view('kematian',[
-        "title"=>"kematian"
-    ]);
-});
-Route::get('/perpindahan', [PendudukController::class,"index"]);
+Route::get('/penduduk_keluar', [PendudukController::class,"tampilKeluar"]);
+
+Route::get('/kematian', [PendudukController::class,"tampilKematian"]);
+Route::get('/undo_kematian/{penduduk:id}', [PendudukController::class,"undoKematian"]);
+
+Route::get('/pindah', [PendudukController::class,"tampilPindah"]);
+
+// Route::get('/detail_kk', function () {
+//     return view('detail_kk',[
+//         "title"=>"Detail Kartu Keluarga"
+//     ]);
+// });
+
 
 

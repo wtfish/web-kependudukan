@@ -86,8 +86,10 @@
 
                             <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav" >
+                                    <a class="nav-link" href="/pindah">Pindah</a>
+                                    <a class="nav-link" href="/penduduk_keluar">Keluar</a>
                                     <a class="nav-link" href="/kematian">Kematian</a>
-                                    <a class="nav-link" href="/perpindahan">Perpindahan</a>
+                                    
                                 </nav>
                             </div>
 
