@@ -64,3 +64,11 @@ Route::get('/detail_kk', function () {
     ]);
 });
 
+Route::get('/kematian', function () {
+    return view('kematian',[
+        "title"=>"kematian"
+    ]);
+});
+Route::get('/perpindahan', [PendudukController::class,"index"]);
+
+
