@@ -14,6 +14,7 @@ use App\Models\rt;
 use App\Models\rw;
 use App\Models\status_perkawinan;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -135,53 +136,148 @@ class DatabaseSeeder extends Seeder
             "deskripsi" => "CERAI MATI"
         ]);
         //RT
-        rt::create([
-            "rw_id" => 1
-        ]);
-        rt::create([
-            "rw_id" => 1
-        ]);
-        rt::create([
-            "rw_id" => 1
-        ]);
-        rt::create([
-            "rw_id" => 1
-        ]);
+        for ($i=1; $i <=4 ; $i++) { 
+            rt::create([
+                "rw_id" => 1
+            ]);
+        }
 
-        rt::create([
-            "rw_id" => 2
-        ]);
-        rt::create([
-            "rw_id" => 2
-        ]);
-        rt::create([
-            "rw_id" => 2
-        ]);
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 2
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 3
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 4
+            ]);
+        }
 
-        rt::create([
-            "rw_id" => 3
-        ]);
-        rt::create([
-            "rw_id" => 3
-        ]);
-        rt::create([
-            "rw_id" => 3
-        ]);
-        rt::create([
-            "rw_id" => 4
-        ]);
-        rt::create([
-            "rw_id" => 4
-        ]);
-        rt::create([
-            "rw_id" => 4
-        ]);
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 5
+            ]);
+        }
+        for ($i=1; $i <= 4; $i++) { 
+            rt::create([
+                "rw_id" => 6
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 7
+            ]);
+        }
+        for ($i=1; $i <= 4; $i++) { 
+            rt::create([
+                "rw_id" => 8
+            ]);
+        }
+        for ($i=1; $i <= 6; $i++) { 
+            rt::create([
+                "rw_id" => 9
+            ]);
+        }
+        for ($i=1; $i <= 4; $i++) { 
+            rt::create([
+                "rw_id" => 10
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 11
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 12
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 13
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 14
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 15
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 16
+            ]);
+        }
+        for ($i=1; $i <= 4; $i++) { 
+            rt::create([
+                "rw_id" => 17
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 18
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 19
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 20
+            ]);
+        }
+        for ($i=1; $i <= 3; $i++) { 
+            rt::create([
+                "rw_id" => 21
+            ]);
+        }
 
-        for ($i = 1; $i <= 4; $i++) {
+
+        // rw to dusun
+        for ($i=1; $i <= 4; $i++) { 
             rw::create([
                 "dusun_id" => 1
             ]);
         }
+        for ($i=1; $i <= 3; $i++) { 
+            rw::create([
+                "dusun_id" => 2
+            ]);
+        }
+        for ($i=1; $i <= 2; $i++) { 
+            rw::create([
+                "dusun_id" => 3
+            ]);
+        }
+        for ($i=1; $i <= 4; $i++) { 
+            rw::create([
+                "dusun_id" => 4
+            ]);
+        }
+        for ($i=1; $i <= 4; $i++) { 
+            rw::create([
+                "dusun_id" => 5
+            ]);
+        }
+        for ($i=1; $i <= 4; $i++) { 
+            rw::create([
+                "dusun_id" => 6
+            ]);
+        }
+
+
         //DUSUNS
         dusun::create([
             "deskripsi" => "KRAJAN"
@@ -202,7 +298,7 @@ class DatabaseSeeder extends Seeder
             "deskripsi" => "MULYOSARI"
         ]);
 
-
+        DB::insert("INSERT INTO pekerjaans(deskripsi) VALUES ('BELUM/TIDAK BEKERJA'), ('MENGURUS RUMAH TANGGA'), ('PELAJAR/MAHASISWA'), ('PENSIUNAN'), ('PNS'), ('TNI'), ('KEPOLISIAN RI'), ('PERDAGANGAN'), ('PETANI/PEKEBUN'), ('PETERNAK'), ('NELAYAN/PERIKANAN'), ('INDUSTRI'), ('KONTRUKSI'), ('TRANSPORTASI'), ('KARYAWAN SWASTA'), ('KARYAWAN BUMN'), ('KARYAWAN BUMD'), ('KARYAWAN HONORER'), ('BURUH HARIAN LEPAS'), ('BURUH TANI/PERKEBUNAN'), ('BURUH NELAYAN/PERIKANAN'), ('BURUH PETERNAKAN'), ('PEMBANTU RUMAH TANGGA'), ('TUKANG CUKUR'), ('TUKANG LISTRIK'), ('TUKANG BATU'), ('TUKANG KAYU'), ('TUKANG SOL SEPATU'), ('TUKANG LAS/PANDAI BESI'), ('TUKANG JAHIT'), ('TUKANG GIGI'), ('PENATA RIAS'), ('PENATA BUSANA'), ('PENATA RAMBUT'), ('MEKANIK'), ('SENIMAN'), ('TABIB'), ('PARAJI'), ('PERANCANG BUSANA'), ('PENTERJEMAH'), ('IMAM MASJID'), ('PENDETA'), ('PASTOR'), ('WARTAWAN'), ('USTADZ/MUBALIGH'), ('JURU MASAK'), ('PROMOTOR ACARA'), ('ANGGOTA DPR RI'), ('ANGGOTA DPD'), ('ANGGOTA BPK'), ('PRESIDEN'), ('WAKIL PRESIDEN'), ('AGGOTA MAHKAMAH KONSTITUSI'), ('AGGOTA KABINET/KEMENTRIAN'), ('DUTA BESAR'), ('GUBERNUR'), ('WAKIL GUBERNUR'), ('BUPATI'), ('WAKIL BUPATI'), ('WALIKOTA'), ('WAKIL WALIKOTA'), ('AGGOTA DPRD PROP'), ('AGGOTA DPRP KAB/KOTA'), ('DOSEN'), ('GURU'), ('PILOT'), ('PENGACARA'), ('NOTARIS'), ('ARSITEK'), ('AKUNTAN'), ('KONSULTAN'), ('DOKTER'), ('BIDAN'), ('PERAWAT'), ('APOTEKER'), ('PSIKIATER/PSIKOLOG'), ('PENYIAR TELEVISI'), ('PENYIAR RADIO'), ('PELAUT'), ('PENELITI'), ('SOPIR'), ('PIALANG'), ('PARANORMAL'), ('PEDAGANG'), ('PERANGKAT DESA'), ('KEPALA DESA'), ('BIARAWATI'), ('WIRASWASTA');", );
 
     }
 }

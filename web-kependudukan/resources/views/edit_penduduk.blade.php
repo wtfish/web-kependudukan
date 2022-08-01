@@ -88,8 +88,8 @@
                         <select style="width: 25%" id="inputGroupSelect01" required name="kelamin" class="form-select @error("kelamin") is-invalid @enderror" >
                             <option selected disabled value="">PILIH KELAMIN</option>
 
-                            <option value=1 {{($penduduk->kelamin ==1 ? "selected" : "")}}>Laki-Laki</option>
-                            <option value=0 {{($penduduk->kelamin ==0 ? "selected" : "")}}>Perempuan</option>
+                            <option value="L" {{($penduduk->kelamin =="L" ? "selected" : "")}}>Laki-Laki</option>
+                            <option value="P" {{($penduduk->kelamin =="P" ? "selected" : "")}}>Perempuan</option>
                         </select>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="agama" required class="form-select @error("agama") is-invalid @enderror">
                             <option selected disabled value="">PILIH AGAMA</option>
                             @foreach ($agama as $item)
-                                <option value="{{$item->id}}" {{($penduduk->agama->id ==$item->id ? "selected" : "")}}>{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}" {{($penduduk->agama ==$item->deskripsi ? "selected" : "")}}>{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -153,7 +153,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="pendidikan" required class="form-select">
                             <option selected disabled value="">PILIH PENDIDIKAN</option>
                             @foreach ($pendidikan as $item)
-                                <option value="{{$item->id}}" {{($penduduk->pendidikan->id ==$item->id ? "selected" : "")}}>{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}" {{($penduduk->pendidikan ==$item->deskripsi ? "selected" : "")}}>{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -166,7 +166,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="pekerjaan" required class="form-select">
                             <option selected disabled value="">PILIH PEKERJAAN</option>
                             @foreach ($pekerjaan as $item)
-                                <option value="{{$item->id}}" {{($penduduk->pekerjaan->id ==$item->id ? "selected" : "")}}>{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}" {{($penduduk->pekerjaan ==$item->deskripsi ? "selected" : "")}}>{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -176,11 +176,10 @@
                 <div class="row my-3">
                     <div class="col-4 ">Hubungan Keluarga</div>
                     <div class="col-8 ">
-                        
                         <select style="width: 25%" id="inputGroupSelect01" name="hubungan_keluarga" required class="form-select">
                             <option selected disabled value="">PILIH HUB-KELUARGA</option>
-                            @foreach ($hubungan as $item)
-                                <option value="{{$item->id}}" {{($penduduk->hubungan_keluarga->id ==$item->id ? "selected" : "")}}>{{$item->deskripsi}}</option>
+                            @foreach ($hubungan_keluarga as $item)
+                                <option value="{{$item->deskripsi}}" {{($penduduk->hubungan_keluarga ==$item->deskripsi ? "selected" : "")}}>{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -193,7 +192,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="status_perkawinan" id="status-perkawinan" required class="form-select">
                             <option selected disabled value="">PILIH STATUS</option>
                             @foreach ($status as $item)
-                                <option value="{{$item->id}}" {{($penduduk->status->id ==$item->id ? "selected" : "")}}>{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}" {{($penduduk->status_perkawinan ==$item->deskripsi ? "selected" : "")}}>{{$item->deskripsi}}</option>
                             @endforeach>
                         </select>
                     </div>
@@ -252,13 +251,13 @@
                 <div class="row my-3">
                     <div class="col-4 "><label for="tanggal_kematian" class="form-label">Tanggal Kematian</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="datetime-local" name="tanggal_kematian" class="form-control" value="{{$penduduk->tanggal_kematian}}">
+                        <input style="width: 50%" type="date" id="tanggal_kematian" name="tanggal_kematian" value="{{$penduduk->tanggal_kematian}}" class="form-control">
                     </div>
                 </div>
                 <div class="row my-3">
-                    <div class="col-4 "><label for="keterangan_kematian" class="form-label">Keterangan</label></div>
+                    <div class="col-4 "><label for="waktu_kematian" class="form-label">Waktu Kematian</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="text" name="keterangan_kematian" class="form-control" value="{{$penduduk->keterangan_kematian}}">
+                        <input style="width: 50%" type="time" id="waktu_kematian" name="waktu_kematian" value="{{$penduduk->waktu_kematian}}" class="form-control">
                     </div>
                 </div>
                 <div class="row">

@@ -90,10 +90,10 @@
                 <div class="row my-3">
                     <div class="col-4 ">Jenis Kelamin</div>
                     <div class="col-8 ">
-                        <select style="width: 25%" id="inputGroupSelect01" required name="kelamin" class="form-select @error("kelamin") is-invalid @enderror" value="{{old("kelamin")}}">
+                        <select style="width: 25%" id="inputGroupSelect01"   name="kelamin" class="form-select @error("kelamin") is-invalid @enderror" value="{{old("kelamin")}}">
                             <option selected disabled value="">Choose...</option>
-                            <option value=1>Laki-Laki</option>
-                            <option value=0>Perempuan</option>
+                            <option value=L>Laki-Laki</option>
+                            <option value=P>Perempuan</option>
                         </select>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                     <div class="col-4 ">RT</div>
                     <div class="col-8 ">
                         
-                        <select style="width: 25%" id="inputGroupSelect01" name="rt" class="form-select @error("rt") is-invalid @enderror" required>
+                        <select style="width: 25%" id="inputGroupSelect01" name="rt" class="form-select @error("rt") is-invalid @enderror"  >
                             <option selected disabled value="">PILIH RT</option>
                             @foreach ($rt as $item)
                                 <option value="{{$item->id}}">{{$item->id}}</option>
@@ -141,10 +141,10 @@
                     <div class="col-4 ">Agama</div>
                     <div class="col-8 ">
                         
-                        <select style="width: 25%" id="inputGroupSelect01" name="agama" required class="form-select @error("agama") is-invalid @enderror">
+                        <select style="width: 25%" id="inputGroupSelect01" name="agama" required  class="form-select @error("agama") is-invalid @enderror">
                             <option selected disabled value="">PILIH AGAMA</option>
                             @foreach ($agama as $item)
-                                <option value="{{$item->id}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}">{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -154,10 +154,10 @@
                     <div class="col-4 ">Pendidikan</div>
                     <div class="col-8 ">
                         
-                        <select style="width: 25%" id="inputGroupSelect01" name="pendidikan" required class="form-select">
+                        <select style="width: 25%" id="inputGroupSelect01" name="pendidikan" required  class="form-select">
                             <option selected disabled value="">PILIH PENDIDIKAN</option>
                             @foreach ($pendidikan as $item)
-                                <option value="{{$item->id}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}">{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -167,10 +167,10 @@
                     <div class="col-4 ">Pekerjaan</div>
                     <div class="col-8 ">
                         
-                        <select style="width: 25%" id="inputGroupSelect01" name="pekerjaan" required class="form-select">
+                        <select style="width: 25%" id="inputGroupSelect01" name="pekerjaan" required  class="form-select">
                             <option selected disabled value="">PILIH PEKERJAAN</option>
                             @foreach ($pekerjaan as $item)
-                                <option value="{{$item->id}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}">{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -181,10 +181,10 @@
                     <div class="col-4 ">Hubungan Keluarga</div>
                     <div class="col-8 ">
                         
-                        <select style="width: 25%" id="inputGroupSelect01" name="hubungan_keluarga" required class="form-select">
+                        <select style="width: 25%" id="inputGroupSelect01" name="hubungan_keluarga" required  class="form-select">
                             <option selected disabled value="">PILIH HUB-KELUARGA</option>
                             @foreach ($hubungan as $item)
-                                <option value="{{$item->id}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}">{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -194,10 +194,10 @@
                 <div class="row my-3">
                     <div class="col-4 "><label for="status-perkawinan">Status Perkawinan</label></div>
                     <div class="col-8 ">
-                        <select style="width: 25%" id="inputGroupSelect01" name="status_perkawinan" id="status-perkawinan" required class="form-select">
+                        <select style="width: 25%" id="inputGroupSelect01" name="status_perkawinan" id="status-perkawinan"  required class="form-select">
                             <option selected disabled value="">PILIH STATUS</option>
                             @foreach ($status as $item)
-                                <option value="{{$item->id}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}">{{$item->deskripsi}}</option>
                             @endforeach>
                         </select>
                     </div>
@@ -206,7 +206,7 @@
                     <div class="col-4 "><label for="exampleRadios1">Status Penduduk Baru</label></div>
                     <div class="col-8 ">
                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_penduduk_baru" id="exampleRadios1" value="Baru" required>
+                            <input class="form-check-input" type="radio" name="status_penduduk_baru" id="exampleRadios1" value="Baru" required >
                             <label class="form-check-label" for="exampleRadios1">
                               Baru
                             </label>
@@ -227,7 +227,7 @@
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label" for="akte_kelahiran">Akte Kelahiran</label></div>
-                    <div class="col-8 "><input class="form-control" style="width: 50%" type="text" placeholder="Akte Kelahiran"name="akte_kelahiran" id="akte_kelahiran"></div>
+                    <div class="col-8 "><input class="form-control" style="width: 50%" type="text" placeholder="Akte Kelahiran" name="akte_kelahiran" id="akte_kelahiran"></div>
                 </div>
                 <div class="row">
                     <div class="col-12 background text-black text-center " style="">Pernikahan</div>
@@ -256,13 +256,13 @@
                 <div class="row my-3">
                     <div class="col-4 "><label for="tanggal_kematian" class="form-label">Tanggal Kematian</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="datetime-local" name="tanggal_kematian" class="form-control">
+                        <input style="width: 50%" type="date" id="tanggal_kematian" name="tanggal_kematian" class="form-control">
                     </div>
                 </div>
                 <div class="row my-3">
-                    <div class="col-4 "><label for="keterangan_kematian" class="form-label">Keterangan</label></div>
+                    <div class="col-4 "><label for="waktu_kematian" class="form-label">Waktu Kematian</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="text" name="keterangan_kematian" class="form-control">
+                        <input style="width: 50%" type="time" id="waktu_kematian" name="waktu_kematian" class="form-control">
                     </div>
                 </div>
                 <div class="row">

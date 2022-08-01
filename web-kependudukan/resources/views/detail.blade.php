@@ -30,7 +30,7 @@
     </div>
     <div class="row border-bottom">
         <div class="col-4 ">Jenis Kelamin</div>
-        <div class="col-8 ">: {{($penduduk->kelamin == 1? "Laki-Laki" : "Perempuan")}}</div>
+        <div class="col-8 ">: {{($penduduk->kelamin)}}</div>
     </div>
     <div class="row border-bottom">
         <div class="col-4 ">Nama Ayah</div>
@@ -46,19 +46,19 @@
     </div>
     <div class="row border-bottom">
         <div class="col-4 ">Agama</div>
-        <div class="col-8 ">: {{$penduduk->agama->deskripsi}}</div>
+        <div class="col-8 ">: {{$penduduk->agama}}</div>
     </div>
     <div class="row border-bottom">
         <div class="col-4 ">Status Perkawinan</div>
-        <div class="col-8 ">: {{$penduduk->status->deskripsi}}</div>
+        <div class="col-8 ">: {{$penduduk->status_perkawinan}}</div>
     </div>
     <div class="row border-bottom">
         <div class="col-4 ">Pekerjaan</div>
-        <div class="col-8 ">: {{$penduduk->pekerjaan->deskripsi}}</div>
+        <div class="col-8 ">: {{$penduduk->pekerjaan}}</div>
     </div>
     <div class="row border-bottom">
         <div class="col-4 ">Hubungan Keluarga</div>
-        <div class="col-8 ">: {{$penduduk->hubungan_keluarga->deskripsi}}</div>
+        <div class="col-8 ">: {{$penduduk->hubungan_keluarga}}</div>
     </div>
     <div class="row border-bottom">
         <div class="col-4 ">Status Penduduk Baru</div>
@@ -97,6 +97,10 @@
     <div class="row border-bottom">
         <div class="col-4 ">Tanggal Kematian</div>
         <div class="col-8 ">: {{($penduduk->tanggal_kematian == ""? "-" : $penduduk->tanggal_kematian)}}</div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-4 ">Waku Kematian</div>
+        <div class="col-8 ">: {{($penduduk->waktu_kematian == ""? "-" : $penduduk->waktu_kematian)}}</div>
     </div>
     <div class="row border-bottom">
         <div class="col-4 ">Keterangan</div>

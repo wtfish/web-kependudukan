@@ -72,7 +72,7 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
 
             <?php FunctionName($jumlah,  $bagian1 ,"fa-solid fa-user-group" ); ?>
             <?php FunctionName(100, 'Kepala Keluarga',"fa-solid fa-id-card"); ?>
-            <?php FunctionName(400, 'Laki-laki',"fa-solid fa-mars"); ?>
+            <?php FunctionName(400, 'Laki-laki',"fa-solid` fa-mars"); ?>
             <?php FunctionName(325, 'Perempuan',"fa-solid fa-venus"); ?>
             <?php FunctionName(29, 'Lahir',"fa-solid fa-face-smile"); ?>
             <?php FunctionName(20, 'Meninggal',"fa-solid fa-face-frown"); ?>

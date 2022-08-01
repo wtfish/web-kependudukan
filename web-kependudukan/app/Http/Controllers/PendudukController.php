@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\PendudukImport;
 use App\Models\agama;
 use App\Models\hubungan_keluarga;
 use App\Models\pekerjaan;
@@ -12,16 +13,19 @@ use App\Models\status_perkawinan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PendudukController extends Controller
 {
     public function index()
     {
+        // dd(Penduduk::);
         return view(
             'data_penduduk',
             [
                 "title" => "Data Penduduk",
-                "penduduks" => Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNotIn("status_penduduk_baru",["Keluar"])->whereNull("tanggal_kematian")->whereNull("keterangan_kematian")->get()
+                // "penduduks"=>Penduduk::all()
+                "penduduks" => Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNull("tanggal_kematian")->whereNotIn("id",Penduduk::where("status_penduduk_baru","Keluar")->get("id"))->paginate(15)
             ]
         );
     }
@@ -60,6 +64,7 @@ class PendudukController extends Controller
             "status_perkawinan" => "required",
             "status_penduduk_baru" => "required",
         ]);
+
         Penduduk::create([
             "nik" => $validatedData["nik"],
             "kk" => $validatedData["kk"],
@@ -71,20 +76,20 @@ class PendudukController extends Controller
             "nama_ibu" => $validatedData["nama_ibu"],
             "nama_ayah" => $validatedData["nama_ayah"],
             "rt_id" => $validatedData["rt"],
-            "agama_id" => $validatedData["agama"],
+            "agama" => $validatedData["agama"],
             "status_penduduk_baru" => $validatedData["status_penduduk_baru"],
-            "pendidikan_id" => $validatedData["pendidikan"],
-            "pekerjaan_id" => $validatedData["pekerjaan"],
-            "hubungan_id" => $validatedData["hubungan_keluarga"],
-            "status_id" => $validatedData["status_perkawinan"],
+            "pendidikan" => $validatedData["pendidikan"],
+            "pekerjaan" => $validatedData["pekerjaan"],
+            "hubungan_keluarga" => $validatedData["hubungan_keluarga"],
+            "status_perkawinan" => $validatedData["status_perkawinan"],
             "akte_kelahiran" => $request["akte_kelahiran"],
             "tanggal_nikah" => $request["tanggal_nikah"],
             "nomor_buku_nikah" => $request["no_buku_nikah"],
             "kua" => $request["kua"],
             "tanggal_kematian" => $request["tanggal_kematian"],
-            "keterangan_kematian" => $request["keterangan_kematian"],
+            "waktu_kematian" => $request["waktu_kematian"],
+            "keterangan_kematian"=>(($request["tanggal_kematian"] != null) ? ($validatedData["kelamin"]!=null ? ($validatedData["kelamin"]=="L" ? "MDL" : "MDP" ) : "MD" ) : null),
             "kemiskinan" => $request["kemiskinan"]
-
         ]);
         return redirect()->route("penduduk");
 
@@ -104,7 +109,7 @@ class PendudukController extends Controller
         return view("edit_penduduk", [
             "penduduk" => $penduduk,
             "title" => "Edit Penduduk",
-            "hubungan" => hubungan_keluarga::all(),
+            "hubungan_keluarga" => hubungan_keluarga::all(),
             "agama" => agama::all(),
             "pendidikan" => pendidikan::all(),
             "status" => status_perkawinan::all(),
@@ -143,18 +148,19 @@ class PendudukController extends Controller
             "nama_ibu" => $validatedData["nama_ibu"],
             "nama_ayah" => $validatedData["nama_ayah"],
             "rt_id" => $validatedData["rt"],
-            "agama_id" => $validatedData["agama"],
+            "agama" => $validatedData["agama"],
             "status_penduduk_baru" => $validatedData["status_penduduk_baru"],
-            "pendidikan_id" => $validatedData["pendidikan"],
-            "pekerjaan_id" => $validatedData["pekerjaan"],
-            "hubungan_id" => $validatedData["hubungan_keluarga"],
-            "status_id" => $validatedData["status_perkawinan"],
+            "pendidikan" => $validatedData["pendidikan"],
+            "pekerjaan" => $validatedData["pekerjaan"],
+            "hubungan_keluarga" => $validatedData["hubungan_keluarga"],
+            "status_perkawinan" => $validatedData["status_perkawinan"],
             "akte_kelahiran" => $request["akte_kelahiran"],
             "tanggal_nikah" => $request["tanggal_nikah"],
             "nomor_buku_nikah" => $request["no_buku_nikah"],
             "kua" => $request["kua"],
             "tanggal_kematian" => $request["tanggal_kematian"],
-            "keterangan_kematian" => $request["keterangan_kematian"],
+            "waktu_kematian" => $request["waktu_kematian"],
+            "keterangan_kematian" => (($request["tanggal_kematian"] != null) ? ($validatedData["kelamin"]!=null ? ($validatedData["kelamin"]=="L" ? "MDL" : "MDP" ) : "MD" ) : null),
             "kemiskinan" => $request["kemiskinan"]
         ]);
          return redirect()->route("penduduk");
@@ -177,7 +183,7 @@ class PendudukController extends Controller
         // dd(Penduduk::where('tanggal_kematian', '<>',"")->orWhere('keterangan_kematian', '<>',"")->get());
         return view('kematian',[
             "title"=>"Penduduk Meninggal",
-            "penduduks"=>Penduduk::where('tanggal_kematian', '<>',"")->orWhere('keterangan_kematian', '<>',"")->get()
+            "penduduks"=>Penduduk::whereNotNull('tanggal_kematian')->get()
         ]);
     }
 
@@ -190,9 +196,13 @@ class PendudukController extends Controller
     }
     public function undoKematian(Penduduk $penduduk){
         $penduduk->tanggal_kematian=null;
-        $penduduk->keterangan_kematian=null;
+        $penduduk->waktu_kematian=null;
 
         $penduduk->save();
         return redirect()->route("penduduk");
+    }
+    public function importPenduduk(Request $request){
+        Excel::import(new PendudukImport,$request->file("data_penduduk"));
+        return back();
     }
 }
