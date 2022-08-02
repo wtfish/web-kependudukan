@@ -11751,3 +11751,13 @@ body {
     width: 75px;
     height: auto;
 }
+.side-nav-color{
+    color: white;
+}
+.side-nav-color:hover{
+    font-weight: 800;
+}
+
+.side-nav-color:active{
+    color:black;
+}

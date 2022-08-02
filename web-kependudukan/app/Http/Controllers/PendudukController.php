@@ -11,12 +11,17 @@ use App\Models\pendidikan;
 use App\Models\Penduduk;
 use App\Models\rt;
 use App\Models\status_perkawinan;
+<<<<<<< HEAD
 use Carbon\Carbon;
+=======
+use App\Models\User;
+>>>>>>> bb6eca8329641cb5dd6dae297d2191fa0ace1233
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class PendudukController extends Controller
 {
@@ -180,7 +185,7 @@ class PendudukController extends Controller
             "title"=>"Penduduk Keluar",
             "penduduks"=>Penduduk::where("status_penduduk_baru","Keluar")->get()
         ]);
-        
+
     }
     public function tampilKematian(){
         // dd(Penduduk::where('tanggal_kematian', '<>',"")->orWhere('keterangan_kematian', '<>',"")->get());
@@ -209,8 +214,18 @@ class PendudukController extends Controller
         Excel::import(new PendudukImport,$request->file("data_penduduk"));
         return back();
     }
+<<<<<<< HEAD
     public function download_active(){
         $date = date('d-m-y h:i:s');
         return Excel::download(new UserActiveExport,"penduduk_aktif_{$date}.xlsx");
     }
+=======
+
+    public function login(){
+        return view('login.index',[
+            'title'=>'Login Page'
+        ]);
+    }
+    
+>>>>>>> bb6eca8329641cb5dd6dae297d2191fa0ace1233
 }

@@ -48,7 +48,7 @@ Route::get('/data_kk', function () {
 //penduduk
 
     Route::get('/data_penduduk', [PendudukController::class,"index"])->name("penduduk");
-    Route::get('/tambah', [PendudukController::class,"tampilTambah"]); 
+    Route::get('/tambah', [PendudukController::class,"tampilTambah"]);
     Route::post('/tambah', [PendudukController::class,"tambah"]);
 
     Route::get('data_penduduk/detail/{penduduk:id}', [PendudukController::class,"show"]);
@@ -74,11 +74,16 @@ Route::get('/data_kk', function () {
 //     ]);
 // });
 
+<<<<<<< HEAD
 Route::get('/tabss', function () {
     return view('export.penduduk',[
         
     ]);
 });
 
+=======
+route::get('/login',[PendudukController::class,'login']);
+route::post('/login',[PendudukController::class],'authenticate');
+>>>>>>> bb6eca8329641cb5dd6dae297d2191fa0ace1233
 
 
