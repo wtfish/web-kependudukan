@@ -10,10 +10,12 @@ use App\Models\pendidikan;
 use App\Models\Penduduk;
 use App\Models\rt;
 use App\Models\status_perkawinan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class PendudukController extends Controller
 {
@@ -177,7 +179,7 @@ class PendudukController extends Controller
             "title"=>"Penduduk Keluar",
             "penduduks"=>Penduduk::where("status_penduduk_baru","Keluar")->get()
         ]);
-        
+
     }
     public function tampilKematian(){
         // dd(Penduduk::where('tanggal_kematian', '<>',"")->orWhere('keterangan_kematian', '<>',"")->get());
@@ -205,4 +207,11 @@ class PendudukController extends Controller
         Excel::import(new PendudukImport,$request->file("data_penduduk"));
         return back();
     }
+
+    public function login(){
+        return view('login.index',[
+            'title'=>'Login Page'
+        ]);
+    }
+    
 }
