@@ -19,16 +19,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('testing',[
-        "penduduks"=>Penduduk::with(["hubungan_keluarga","agama","pendidikan","status","pekerjaan"])->latest()->get()
-    ]);
-});
-Route::get('/test/{cat:deskripsi}', function (pekerjaan $cat) {
-    return view('testing_detail',[
-        "penduduk"=>$cat->penduduk
-    ]);
-});
+// Route::get('/', function () {
+//     return view('testing',[
+//         "penduduks"=>Penduduk::with(["hubungan_keluarga","agama","pendidikan","status","pekerjaan"])->latest()->get()
+//     ]);
+// });
+// Route::get('/test/{cat:deskripsi}', function (pekerjaan $cat) {
+//     return view('testing_detail',[
+//         "penduduk"=>$cat->penduduk
+//     ]);
+// });
 
 
 // jadi
@@ -40,13 +40,11 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/data_kk', function () {
-    return view('data_kk',[
-        "title"=>"Data Kartu Keluarga"
-    ]);
-});
-//penduduk
+    Route::get('/data_kk', [PendudukController::class,"tampilKk"])->name("data_kk");
+    Route::get('/data_kk/detail/{kk}', [PendudukController::class,"detailKk"]);
+    Route::get('/data_kk/keluar/{kk}', [PendudukController::class,"keluarKk"]);
 
+    //penduduk
     Route::get('/data_penduduk', [PendudukController::class,"index"])->name("penduduk");
     Route::get('/tambah', [PendudukController::class,"tampilTambah"]);
     Route::post('/tambah', [PendudukController::class,"tambah"]);
@@ -55,13 +53,16 @@ Route::get('/data_kk', function () {
 
     Route::get('data_penduduk/edit/{penduduk:id}', [PendudukController::class,"tampilEdit"]);
     Route::post('data_penduduk/edit/{penduduk:id}', [PendudukController::class,"edit"]);
-
     Route::get('data_penduduk/keluar/{penduduk:id}', [PendudukController::class,"keluar"]);
-
     Route::get('/penduduk_keluar', [PendudukController::class,"tampilKeluar"]);
 
+    // import export
     Route::post('data_penduduk/import', [PendudukController::class,"importPenduduk"]);
     Route::get("/download_active",[PendudukController::class,"download_active"]);
+    Route::get("/download_all",[PendudukController::class,"download_all"]);
+    Route::get("/download_pindah",[PendudukController::class,"download_pindah"]);
+    Route::get("/download_keluar",[PendudukController::class,"download_keluar"]);
+    Route::get("/download_meninggal",[PendudukController::class,"download_meninggal"]);
 
     Route::get('/kematian', [PendudukController::class,"tampilKematian"]);
     Route::get('/undo_kematian/{penduduk:id}', [PendudukController::class,"undoKematian"]);
@@ -74,16 +75,15 @@ Route::get('/data_kk', function () {
 //     ]);
 // });
 
-<<<<<<< HEAD
-Route::get('/tabss', function () {
-    return view('export.penduduk',[
-        
+Route::get('/kelola_data', function () {
+    return view('kelola',[
+            "title"=>"Dashboard",
+            "bagian1"=>"Penduduk",
+            "jumlah"=>100
     ]);
 });
 
-=======
 route::get('/login',[PendudukController::class,'login']);
 route::post('/login',[PendudukController::class],'authenticate');
->>>>>>> bb6eca8329641cb5dd6dae297d2191fa0ace1233
 
 

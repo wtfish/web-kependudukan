@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Exports\UserActiveExport;
+use App\Exports\UserAllExport;
+use App\Exports\UserKeluarExport;
+use App\Exports\UserMeninggalExport;
+use App\Exports\UserPindahExport;
 use App\Imports\PendudukImport;
 use App\Models\agama;
 use App\Models\hubungan_keluarga;
@@ -11,18 +15,14 @@ use App\Models\pendidikan;
 use App\Models\Penduduk;
 use App\Models\rt;
 use App\Models\status_perkawinan;
-<<<<<<< HEAD
 use Carbon\Carbon;
-=======
 use App\Models\User;
->>>>>>> bb6eca8329641cb5dd6dae297d2191fa0ace1233
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Contracts\Service\Attribute\Required;
-
 class PendudukController extends Controller
 {
     public function index()
@@ -202,9 +202,31 @@ class PendudukController extends Controller
             "penduduks"=>Penduduk::where("status_penduduk_baru","Pindah")->get()
         ]);
     }
+    public function tampilKk(){
+        return view("data_kk",[
+            "title"=>"Data KK",
+            "kks" => Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNull("tanggal_kematian")->whereNotIn("id",Penduduk::where("status_penduduk_baru","Keluar")->get("id"))->where("hubungan_keluarga","=","KEPALA KELUARGA")->orderBy('rt_id', 'asc')->orderBy('kk', 'asc')->get()
+        ]);
+    }
+    public function detailKk(int $kk){
+        return view("detail_kk",[
+            "title"=>"Data KK",
+            "kk"=>$kk,
+            "penduduks" => Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNull("tanggal_kematian")->whereNotIn("id",Penduduk::where("status_penduduk_baru","Keluar")->get("id"))->where("kk","=",$kk)->get()
+        ]);
+    }
+    public function keluarKK(int $kk){
+        Penduduk::where("kk",(string)$kk)->update([
+            "status_penduduk_baru"=>"Keluar"
+        ]);
+        // return redirect()->route("data_kk");
+    }
+
+
     public function undoKematian(Penduduk $penduduk){
         $penduduk->tanggal_kematian=null;
         $penduduk->waktu_kematian=null;
+        $penduduk->keterangan_kematian=null;
 
         $penduduk->save();
         return redirect()->route("penduduk");
@@ -214,12 +236,26 @@ class PendudukController extends Controller
         Excel::import(new PendudukImport,$request->file("data_penduduk"));
         return back();
     }
-<<<<<<< HEAD
     public function download_active(){
         $date = date('d-m-y h:i:s');
         return Excel::download(new UserActiveExport,"penduduk_aktif_{$date}.xlsx");
     }
-=======
+    public function download_all(){
+        $date = date('d-m-y h:i:s');
+        return Excel::download(new UserAllExport,"penduduk_{$date}.xlsx");
+    }
+    public function download_pindah(){
+        $date = date('d-m-y h:i:s');
+        return Excel::download(new UserPindahExport,"penduduk_pindah_{$date}.xlsx");
+    }
+    public function download_keluar(){
+        $date = date('d-m-y h:i:s');
+        return Excel::download(new UserKeluarExport,"penduduk_keluar_{$date}.xlsx");
+    }
+    public function download_meninggal(){
+        $date = date('d-m-y h:i:s');
+        return Excel::download(new UserMeninggalExport,"penduduk_meninggal_{$date}.xlsx");
+    }
 
     public function login(){
         return view('login.index',[
@@ -227,5 +263,4 @@ class PendudukController extends Controller
         ]);
     }
     
->>>>>>> bb6eca8329641cb5dd6dae297d2191fa0ace1233
 }

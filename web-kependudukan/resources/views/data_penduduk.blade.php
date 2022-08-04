@@ -1,57 +1,15 @@
 @extends('layouts.main')
 @section('body')
     <main>
-        <div class="container-fluid px-4">
+      <div class="container-fluid px-4">
             <div class="card mb-4">
                 <div class="card-header">
                     <h1 class="text-center">Data Penduduk Aktif</h1>
 
-<<<<<<< HEAD
         <a href="/tambah"><button type="button" class="btn btn-primary"><img
               src="/assets/logoTambah.png"> Tambah</button></a>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-            class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
-            <path
-              d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707V11.5z" />
-            <path
-              d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
-          </svg> Import data
-        </button>
+        
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Upload data penduduk</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <form action="data_penduduk/import" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-body">
-                  <p class="text-center"><strong>PERHATIAN !</strong> </p>
-                  <p>- Pastikan file sudah mengikuti aturan <a href="https://google.com">disini</a></p>
-                  <p>- Proses ini akan <strong>menghapus</strong> seluruh data yang ada !</p>
-                  <br>
-                  <div class="form-group">
-                    <input type="file" name="data_penduduk" id="" required>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                  <button type="submit" class="btn btn-primary">Upload</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <a href="/download_active"><button class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
-          <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
-          <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
-        </svg> Download Excel</button></a>
       </div>
       <div >
         <table class="table table-striped-columns">
@@ -79,7 +37,6 @@
           </tfoot>
           <tbody>
             {{-- <tr>
-=======
                     <a href="/tambah"><button type="button" class="btn btn-primary"><img
                                 src="/assets/logoTambah.png">Tambah</button></a>
                     <!-- Button trigger modal -->
@@ -148,7 +105,6 @@
                         </tfoot>
                         <tbody>
                             {{-- <tr>
->>>>>>> bb6eca8329641cb5dd6dae297d2191fa0ace1233
               <td>Tiger Nixon</td>
               <td>System Architect</td>
               <td>Edinburgh</td>

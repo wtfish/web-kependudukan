@@ -89,7 +89,7 @@ th{
                 <td>{{$penduduk->nik}}</td>
                 <td>{{$penduduk->nama}}</td>
                 <td>{{$penduduk->tempat_lahir}}</td>
-                <td>{{$penduduk->tanggal_lahir}}</td>
+                <td>{{($penduduk->tanggal_lahir =="" ? "": "=DATEVALUE(\"{$penduduk->tanggal_lahir}\")")}}</td>
                 <td>{{\Carbon\Carbon::parse($penduduk->tanggal_lahir)->age}}</td>
                 <td>{{$penduduk->hubungan_keluarga}}</td>
                 <td>{{$penduduk->status_perkawinan}}</td>
@@ -103,11 +103,11 @@ th{
                 <td>{{$penduduk->rt_id}}</td>
                 <td>{{($penduduk->rt_id=="" ? $penduduk->rt_id :  $penduduk->rt->rw->id )}}</td>
                 <td>{{($penduduk->rt_id==""? $penduduk->rt_id:$penduduk->rt->rw->dusun->deskripsi )}}</td>
-                <td>{{$penduduk->tanggal_nikah}}</td>
+                <td>{{($penduduk->tanggal_nikah =="" ? "": "=DATEVALUE(\"{$penduduk->tanggal_nikah}\")")}}</td>
                 <td>{{$penduduk->nomor_buku_nikah}}</td>
                 <td>{{$penduduk->kua}}</td>
                 <td>{{$penduduk->akte_kelahiran}}</td>
-                <td>{{$penduduk->tanggal_kematian}}</td>
+                <td>{{($penduduk->tanggal_kematian =="" ? "": "=DATEVALUE(\"{$penduduk->tanggal_kematian}\")")}}</td>
                 <td>{{$penduduk->waktu_kematian}}</td>
                 <td>{{$penduduk->keterangan_kematian}}</td>
                 <td>{{$penduduk->nomor_bpjs}}</td>
@@ -116,7 +116,7 @@ th{
                 <td>{{$penduduk->nomor_ijazah}}</td>
                 <td>{{$penduduk->nik_ibu}}</td>
                 <td>{{$penduduk->nik_ayah}}</td>
-                <td>{{$penduduk->tanggal_cerai}}</td>
+                <td>{{($penduduk->tanggal_cerai =="" ? "": "=DATEVALUE(\"{$penduduk->tanggal_cerai}\")")}}</td>
                 <td>{{$penduduk->nomor_akta_cerai}}</td>
                 <td>{{$penduduk->golongan_darah}}</td>
                 <td>{{$penduduk->penyandang_cacat}}</td>

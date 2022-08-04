@@ -1,2 +1,0 @@
-1. di php extension=gd di uncomment
-bisa lewat tutor.png
