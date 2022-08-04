@@ -9,6 +9,7 @@ use App\Models\Penduduk;
 use App\Models\status_perkawinan;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,7 @@ Route::get('/', function () {
         "bagian1"=>"Penduduk",
         "jumlah"=>100
     ]);
-});
+})->name("dashboard");
 
 Route::get('/data_kk', function () {
     return view('data_kk',[
@@ -75,7 +76,17 @@ Route::get('/data_kk', function () {
 //     ]);
 // });
 
-route::get('/login',[PendudukController::class,'login']);
-route::post('/login',[PendudukController::class],'authenticate');
+
+
+//sesuatu
+Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
+Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
+Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+
+
+
 
 

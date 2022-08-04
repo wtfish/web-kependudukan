@@ -21,6 +21,9 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
 }
 ?>
 @extends('layouts.main')
+@guest()
+
+@else
 @section('body')
     <div class="container ">
 
@@ -124,3 +127,4 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
           );
         </script>
     @endsection
+    @endguest

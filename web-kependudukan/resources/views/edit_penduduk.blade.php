@@ -317,7 +317,7 @@
 
         </div>
         <br>
-        <button  class="btn btn-success" data-bs-toggle="modal"
+        <button type="submit" class="btn btn-success" data-bs-toggle="modal"
         data-bs-target="#ModalSubmit"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                 height="16" fill="currentColor" class="bi bi-sd-card-fill" viewBox="0 0 16 16">
                 <path
@@ -325,23 +325,6 @@
             </svg> Simpan</button>
 
         <!-- Modal Keluar -->
-        <div class="modal fade" id="ModalSubmit" tabindex="-1" aria-labelledby="ModalSubmit" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalSubmit">Penduduk Keluar</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        apa anda yakin ingin memindahkan data
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit"class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         </form>
         <a href="/data_penduduk"><button class="mx-3 btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg"
