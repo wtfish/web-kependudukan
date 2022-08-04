@@ -9,6 +9,8 @@ use App\Models\status_perkawinan;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\CustomAuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,13 +36,18 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
 // jadi
+Route::middleware('auth')->group(function(){
+
+
+
+
 Route::get('/', function () {
     return view('dashboard',[
         "title"=>"Dashboard",
         "bagian1"=>"Penduduk",
         "jumlah"=>100
     ]);
-});
+})->name("dashboard");
 
 Route::get('/test', [dashboardController::class,"index"]);
 
@@ -79,6 +86,12 @@ Route::get('/test', [dashboardController::class,"index"]);
 //     ]);
 // });
 
+
+
+//sesuatu
+
+
+
 Route::get('/kelola_data', function () {
     return view('kelola',[
             "title"=>"Dashboard",
@@ -87,7 +100,12 @@ Route::get('/kelola_data', function () {
     ]);
 });
 
-route::get('/login',[PendudukController::class,'login']);
-route::post('/login',[PendudukController::class],'authenticate');
+});
 
+Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
+Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
+Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 

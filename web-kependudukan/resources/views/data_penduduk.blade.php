@@ -3,12 +3,14 @@
     <main>
       <div class="container-fluid px-4">
             <div class="card mb-4">
+
                 <div class="card-header">
                     <h1 class="text-center">Data Penduduk Aktif</h1>
+                    <hr>
 
         <a href="/tambah"><button type="button" class="btn btn-primary"><img
               src="/assets/logoTambah.png"> Tambah</button></a>
-        
+
 
       </div>
       <div >
@@ -80,7 +82,8 @@
 
                 </div>
                 <div>
-                    <table class="table table-striped-columns">
+                    <table class="table" id="datatablesSimple">
+
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>

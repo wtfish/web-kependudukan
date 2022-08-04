@@ -21,6 +21,9 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
 }
 ?>
 @extends('layouts.main')
+@guest()
+
+@else
 @section('body')
 <div class="container row bg-warning">
   <div class="col-12 bg-primary">
@@ -119,5 +122,19 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
       config
     );
   </script>
+    <script>
+          const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+          };
+        </script>
+        <script>
+          const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+          );
+        </script>
+    @endsection
+    @endguest
 
-  @endsection

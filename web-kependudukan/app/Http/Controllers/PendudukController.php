@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Contracts\Service\Attribute\Required;
+use Illuminate\Support\Facades\Auth;
+
 class PendudukController extends Controller
 {
     public function index()
@@ -262,5 +264,14 @@ class PendudukController extends Controller
             'title'=>'Login Page'
         ]);
     }
-    
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard')
+                        ->withSuccess('Signed in');
+        }
+
+        return redirect("login.index")->withSuccess('Login details are not valid');
+    }
 }

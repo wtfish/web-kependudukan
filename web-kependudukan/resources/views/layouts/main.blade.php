@@ -16,6 +16,11 @@
     <body class="background">
 
         <div id="layoutSidenav">
+
+            @auth()
+
+
+
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion purp" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
@@ -45,19 +50,21 @@
                         <table>
                             <tr>
                                 <td rowspan="2">
-                                    <div class="sb-nav-link-icon"><img src="/assets/icon.png" alt=""></div>
+                                    <div class="sb-nav-link-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                          </svg>
+                                    </div>
                                 </td>
-                                <td>EKO</td>
-                            </tr>
-                            <tr>
-                                <td>Online</td>
+                                <td>admin</td>
                             </tr>
                         </table>
 
 
                     </a>
                     <!---------- Tombol Dashboard ---------->
-                            <a class="nav-link side-nav-color {{ ($title==="Dashboard") ? 'active' : '' }} " href="/">
+                            <a class="nav-link {{ ($title==="Dashboard") ? 'active' : '' }} side-nav-color" href="/">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-house "></i></div>
                                 Dashboard
                             </a>
@@ -69,7 +76,7 @@
                                 Kelola Penduduk
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse " id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link side-nav-color{{ $title=="data_kk"? "active" : " "}}" href="/data_kk">Data Kepala Keluarga</a>
                                     <a class="nav-link side-nav-color" href="/data_penduduk">Data Penduduk</a>
@@ -111,21 +118,28 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Pengguna Sistem
                             </a>
-                            <a class="nav-link side-nav-color" href="tables.html">
+                            <a class="nav-link side-nav-color" href="{{ route('signout') }}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
                                 Log out
                             </a>
                         </div>
                     </div>
-                    
+
                 </nav>
             </div>
+
+            @endauth
+
 
             <div id="layoutSidenav_content">
                 <nav class="sb-topnav navbar navbar-expand bg-white sticky-sm-top mx-5 radius">
                     <!-- Sidebar Toggle-->
+                    @auth()
+
+
                     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
                     <!-- Navbar Search-->
+                    @endauth
                    <!-- <form class="d-none d-md-inline-block form-inline  ">
                         <div class="input-group ">
                             <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
@@ -138,14 +152,31 @@
                     </form>
                     <!-- Navbar-->
                     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        </li>
+            
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register-user') }}">Register</a>
+                        </li>
+                    @endguest
                     </ul>
                 </nav>
 
                 <main>
                     <div class="container-fluid px-4">
                         <br>
+                        @auth
+
+
                         <div class="container-body">
                             @yield('body')
+                        </div>
+                        @endauth
+
+                        <div class="container-body">
+                            @yield('body2')
                         </div>
 
                         <div style="height: 100vh"></div>
@@ -163,6 +194,7 @@
                 </footer>
             </div>
         </div>
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
