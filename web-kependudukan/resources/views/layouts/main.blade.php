@@ -64,7 +64,11 @@
 
                     </a>
                     <!---------- Tombol Dashboard ---------->
+<<<<<<< HEAD
                             <a class="nav-link {{ ($title==="Dashboard") ? 'active' : '' }} side-nav-color" href="/">
+=======
+                            <a class="nav-link side-nav-color {{ ($title==="Dashboard") ? 'active' : '' }} " href="/">
+>>>>>>> a1b7828ad34f76057daf4576bc53f63b20308303
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-house "></i></div>
                                 Dashboard
                             </a>
@@ -73,12 +77,12 @@
                     <!---------- Kelola Data ---------->
                             <a class="nav-link collapsed side-nav-color" href="#1" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
-                                Kelola Data
+                                Kelola Penduduk
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse " id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link side-nav-color{{ $title=="data_kk"? "active" : " "}}" href="/data_kk">Data Kartu Keluarga</a>
+                                    <a class="nav-link side-nav-color{{ $title=="data_kk"? "active" : " "}}" href="/data_kk">Data Kepala Keluarga</a>
                                     <a class="nav-link side-nav-color" href="/data_penduduk">Data Penduduk</a>
                                 </nav>
                             </div>
@@ -87,18 +91,29 @@
                     <!---------- Sirkulasi Penduduk ---------->
 
                             <a class="nav-link collapsed side-nav-color" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-folder-closed"></i></div>
+                                <div class="sb-nav-link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+                                    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+                                  </svg></div>
                                 Sirkulasi Penduduk
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
 
                             <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav" >
-                                    <a class="nav-link side-nav-color" href="/pindah">Pindah</a>
+                                    <a class="nav-link side-nav-color" href="/pindah">Pendatang</a>
                                     <a class="nav-link side-nav-color" href="/penduduk_keluar">Keluar</a>
                                     <a class="nav-link side-nav-color" href="/kematian">Kematian</a>
 
                                 </nav>
+                            </div>
+                            <div>
+                                <a class="nav-link side-nav-color {{ ($title==="Dashboard") ? 'active' : '' }} " href="/kelola_data">
+                                    <div class="sb-nav-link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder" viewBox="0 0 16 16">
+                                        <path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z"/>
+                                      </svg></div>
+                                    Kelola data
+                                </a>
                             </div>
 
                     <!------------ /Sirkulasi Penduduk ---------->
@@ -113,10 +128,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
+                    
                 </nav>
             </div>
 
@@ -192,6 +204,5 @@
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
-
     </body>
 </html>

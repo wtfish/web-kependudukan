@@ -39,7 +39,7 @@ return new class extends Migration
             $table->string("akte_kelahiran")->nullable();
 
             $table->date("tanggal_kematian")->nullable();
-            $table->time("waktu_kematian")->nullable();
+            $table->string("waktu_kematian")->nullable();
             $table->string("keterangan_kematian")->nullable();
 
             $table->string("nomor_bpjs")->nullable();
@@ -53,7 +53,7 @@ return new class extends Migration
             $table->string("nik_ibu")->nullable();
             $table->string("nik_ayah")->nullable();
 
-            $table->string("tanggal_cerai")->nullable();
+            $table->date("tanggal_cerai")->nullable();
             $table->string("nomor_akta_cerai")->nullable();
 
             $table->string("golongan_darah")->nullable();
@@ -62,6 +62,8 @@ return new class extends Migration
 
 
             $table->string("status_penduduk_baru",10)->nullable();
+
+            $table->string("kewarganegaraan",6)->nullable();
             //fk
             // $table->foreignId("hubungan_id")->nullable();
             // $table->foreignId("agama_id")->nullable();

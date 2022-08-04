@@ -4,7 +4,7 @@
     <div class="container-fluid px-4">
         <div class="card mb-4">
             <div class="card-header">
-                <h1 class="text-center">Data Penduduk Pindah</h1>
+                <h1 class="text-center">Data Pendatang</h1>
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">

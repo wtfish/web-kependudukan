@@ -1,12 +1,44 @@
 @extends('layouts.main')
 @section('body')
     <main>
-        <div class="container-fluid px-4">
+      <div class="container-fluid px-4">
             <div class="card mb-4">
 
                 <div class="card-header">
                     <h1 class="text-center">Data Penduduk Aktif</h1>
                     <hr>
+
+        <a href="/tambah"><button type="button" class="btn btn-primary"><img
+              src="/assets/logoTambah.png"> Tambah</button></a>
+
+
+      </div>
+      <div >
+        <table class="table table-striped-columns">
+          <thead>
+            <tr class="text-center">
+              <th>No</th>
+              <th>No KK</th>
+              <th>NIK</th>
+              <th>Nama</th>
+              <th>Jenis Kelamin</th>
+              <th>Alamat</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tfoot class="text-center">
+            <tr>
+              <th>No</th>
+              <th>No KK</th>
+              <th>NIK</th>
+              <th>Nama</th>
+              <th>Jenis Kelamin</th>
+              <th>Alamat</th>
+              <th>Action</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            {{-- <tr>
                     <a href="/tambah"><button type="button" class="btn btn-primary"><img
                                 src="/assets/logoTambah.png">Tambah</button></a>
                     <!-- Button trigger modal -->
@@ -51,7 +83,7 @@
                 </div>
                 <div>
                     <table class="table" id="datatablesSimple">
-                        
+
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
