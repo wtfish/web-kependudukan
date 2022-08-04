@@ -113,7 +113,7 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
       config
     );
   </script>
-
+    <script>
           const config = {
             type: 'bar',
             data: data,
@@ -128,4 +128,4 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
         </script>
     @endsection
     @endguest
-  @endsection
+

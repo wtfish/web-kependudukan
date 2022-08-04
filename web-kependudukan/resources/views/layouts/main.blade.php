@@ -64,11 +64,7 @@
 
                     </a>
                     <!---------- Tombol Dashboard ---------->
-<<<<<<< HEAD
                             <a class="nav-link {{ ($title==="Dashboard") ? 'active' : '' }} side-nav-color" href="/">
-=======
-                            <a class="nav-link side-nav-color {{ ($title==="Dashboard") ? 'active' : '' }} " href="/">
->>>>>>> a1b7828ad34f76057daf4576bc53f63b20308303
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-house "></i></div>
                                 Dashboard
                             </a>
@@ -128,7 +124,7 @@
                             </a>
                         </div>
                     </div>
-                    
+
                 </nav>
             </div>
 
@@ -160,7 +156,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">Login</a>
                         </li>
-                        @else
+            
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register-user') }}">Register</a>
                         </li>
