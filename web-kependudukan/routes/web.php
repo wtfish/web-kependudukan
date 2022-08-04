@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\PendudukController;
 use App\Models\pekerjaan;
 use App\Models\pendidikan;
@@ -7,6 +8,7 @@ use App\Models\Penduduk;
 use App\Models\status_perkawinan;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,8 @@ Route::get('/', function () {
         "jumlah"=>100
     ]);
 });
+
+Route::get('/test', [dashboardController::class,"index"]);
 
     Route::get('/data_kk', [PendudukController::class,"tampilKk"])->name("data_kk");
     Route::get('/data_kk/detail/{kk}', [PendudukController::class,"detailKk"]);
