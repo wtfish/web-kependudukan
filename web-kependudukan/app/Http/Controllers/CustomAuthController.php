@@ -22,18 +22,18 @@ class CustomAuthController extends Controller
     public function customLogin(Request $request)
     {
         $request->validate([
-            'email' => 'required|email:dns',
-            'password' => 'required|min:6',
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/')
-                        ->withSuccess('Signed in');
+                        ->withSuccess('Success message');
 
         }
 
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("login")->with(['success' => 'Login error']);
     }
 
 
@@ -57,11 +57,11 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-<<<<<<< HEAD
+
         return redirect("dashboard")->withSuccess('have signed-in');
-=======
+
         return redirect()->route("login");//->withSuccess('have signed-in');
->>>>>>> 03337242fc10c98579a0eb9d4b729cff48778ecf
+
     }
 
 
