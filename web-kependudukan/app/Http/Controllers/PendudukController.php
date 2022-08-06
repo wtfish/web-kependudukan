@@ -187,7 +187,7 @@ class PendudukController extends Controller
     }
     public function hapusPenduduk($id){
         Penduduk::where("id",'=',$id)->delete();
-        return redirect()->route("penduduk");
+        return redirect()->back();
     }
     public function tampilKeluar(){
         // dd( Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereIn("status_penduduk_baru",["Keluar"])->get());
