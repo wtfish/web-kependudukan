@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\PendudukController;
 use App\Models\pekerjaan;
 use App\Models\pendidikan;
@@ -7,9 +8,10 @@ use App\Models\Penduduk;
 use App\Models\status_perkawinan;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\CustomAuthController;
 
-
+Route::post('data_penduduk/import', [PendudukController::class,"importPenduduk"]);
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,13 +41,15 @@ Route::middleware('auth')->group(function(){
 
 
 
-Route::get('/', function () {
-    return view('dashboard',[
-        "title"=>"Dashboard",
-        "bagian1"=>"Penduduk",
-        "jumlah"=>100
-    ]);
-})->name("dashboard");
+// Route::get('/', function () {
+//     return view('dashboard',[
+//         "title"=>"Dashboard",
+//         "bagian1"=>"Penduduk",
+//         "jumlah"=>100
+//     ]);
+// })->name("dashboard");
+
+Route::get('/', [dashboardController::class,"index"])->name("dashboard");
 
     Route::get('/data_kk', [PendudukController::class,"tampilKk"])->name("data_kk");
     Route::get('/data_kk/detail/{kk}', [PendudukController::class,"detailKk"]);
@@ -64,7 +68,7 @@ Route::get('/', function () {
     Route::get('/penduduk_keluar', [PendudukController::class,"tampilKeluar"]);
 
     // import export
-    Route::post('data_penduduk/import', [PendudukController::class,"importPenduduk"]);
+
     Route::get("/download_active",[PendudukController::class,"download_active"]);
     Route::get("/download_all",[PendudukController::class,"download_all"]);
     Route::get("/download_pindah",[PendudukController::class,"download_pindah"]);
@@ -96,12 +100,16 @@ Route::get('/kelola_data', function () {
     ]);
 });
 
+
 });
 
 Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
 Route::get('login', [CustomAuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom')->middleware('guest');
+
+
+Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
-Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 

@@ -29,13 +29,17 @@ class PendudukController extends Controller
 {
     public function index()
     {
+        $data=Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNull("tanggal_kematian")->whereNotIn("id",Penduduk::where("status_penduduk_baru","Keluar")->get("id"));
+        if(request("search")){
+            $data->where("NIK","like","%".request("search")."%")->orWhere("kk","like","%".request("search")."%")->orWhere("nama","like","%".request("search")."%");
+        }
         // dd(Penduduk::);
         return view(
             'data_penduduk',
             [
                 "title" => "Data Penduduk",
                 // "penduduks"=>Penduduk::all()
-                "penduduks" => Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNull("tanggal_kematian")->whereNotIn("id",Penduduk::where("status_penduduk_baru","Keluar")->get("id"))->orderBy('rt_id', 'asc')->orderBy('kk', 'asc')->paginate(15)
+                "penduduks" => $data->orderBy('rt_id', 'asc')->orderBy('kk', 'asc')->paginate(15)
             ]
         );
     }
@@ -138,7 +142,7 @@ class PendudukController extends Controller
             "kelamin" => "required",
             "nama_ayah" => "required",
             "nama_ibu" => 'required',
-            "rt" => "required",
+            "rt" => "required|max:71",
             "agama" => "required",
             "pendidikan" => "required",
             "pekerjaan" => "required",
@@ -201,7 +205,7 @@ class PendudukController extends Controller
         // dd(Penduduk::where('tanggal_kematian', '<>',"")->orWhere('keterangan_kematian', '<>',"")->get());
         return view('pindah',[
             "title"=>"Penduduk Pindah",
-            "penduduks"=>Penduduk::where("status_penduduk_baru","Pindah")->get()
+            "penduduks"=>Penduduk::where("status_penduduk_baru","Pindah Masuk")->get()
         ]);
     }
     public function tampilKk(){
@@ -221,7 +225,7 @@ class PendudukController extends Controller
         Penduduk::where("kk",(string)$kk)->update([
             "status_penduduk_baru"=>"Keluar"
         ]);
-        // return redirect()->route("data_kk");
+        return redirect()->route("data_kk");
     }
 
 

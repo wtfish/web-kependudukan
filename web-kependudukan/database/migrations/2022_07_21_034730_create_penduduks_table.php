@@ -61,7 +61,7 @@ return new class extends Migration
             $table->string("penyandang_cacat")->nullable();
 
 
-            $table->string("status_penduduk_baru",10)->nullable();
+            $table->string("status_penduduk_baru",30)->nullable();
 
             $table->string("kewarganegaraan",6)->nullable();
             //fk

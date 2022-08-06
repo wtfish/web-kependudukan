@@ -127,14 +127,15 @@
                 <div class="row my-3">
                     <div class="col-4 ">RT</div>
                     <div class="col-8 ">
-                        
-                        <select style="width: 25%" id="inputGroupSelect01" name="rt" class="form-select @error("rt") is-invalid @enderror"  >
-                            <option selected disabled value="">PILIH RT</option>
-                            @foreach ($rt as $item)
-                                <option value="{{$item->id}}">{{$item->id}}</option>
-                            @endforeach
-
-                        </select>
+                        <input id="myNumber" name="rt" type="number" min="1" max="71" class="form-control" style="width: 25%">
+                        @error("rt")
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                        </div>
+                    @enderror
                     </div>
                 </div>
                 <div class="row my-3">
@@ -212,9 +213,9 @@
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_penduduk_baru" id="exampleRadios2" value="Pindah">
+                            <input class="form-check-input" type="radio" name="status_penduduk_baru" id="exampleRadios2" value="Pindah Masuk">
                             <label class="form-check-label" for="exampleRadios2">
-                              Pindah
+                              Pindah Masuk
                             </label>
                           </div>
                     </div>
@@ -226,8 +227,8 @@
                     <div class="col-12 background text-black text-center " style="">Kelahiran</div>
                 </div>
                 <div class="row my-3">
-                    <div class="col-4 "><label class="form-label" for="akte_kelahiran">Akte Kelahiran</label></div>
-                    <div class="col-8 "><input class="form-control" style="width: 50%" type="text" placeholder="Akte Kelahiran" name="akte_kelahiran" id="akte_kelahiran"></div>
+                    <div class="col-4 "><label class="form-label" for="akte_kelahiran">Nomer Akte Kelahiran</label></div>
+                    <div class="col-8 "><input class="form-control" style="width: 50%" type="text" placeholder="Nomer Akte Kelahiran" name="akte_kelahiran" id="akte_kelahiran"></div>
                 </div>
                 <div class="row">
                     <div class="col-12 background text-black text-center " style="">Pernikahan</div>

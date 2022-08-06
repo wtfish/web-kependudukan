@@ -57,7 +57,11 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
+<<<<<<< HEAD
         return redirect("dashboard")->withSuccess('have signed-in');
+=======
+        return redirect()->route("login");//->withSuccess('have signed-in');
+>>>>>>> 03337242fc10c98579a0eb9d4b729cff48778ecf
     }
 
 

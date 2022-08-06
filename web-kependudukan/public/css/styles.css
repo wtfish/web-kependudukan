@@ -11720,9 +11720,7 @@ body {
     min-height: 185px;
 }
 
-.purp-bg:hover{
-    background-color: #A7A2D8;
-}
+
 .background{
     background-color: #F5F5F5;
 }
@@ -11761,3 +11759,5 @@ body {
 .side-nav-color:active{
     color:black;
 }
+
+

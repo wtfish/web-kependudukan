@@ -3,7 +3,7 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
 {
     echo '
     <div class="col 12">
-      <div class="card  nav-link purp-bg">
+      <div class="card  text-light purp-bg">
         <div class="row g-0">
         <div class="col-md-8 ">
             <div class="card-body ">
@@ -25,28 +25,37 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
 
 @else
 @section('body')
-<div class="container row bg-warning">
-  <div class="col-12 bg-primary">
-    <form action="/" method="GET" class="col-12" style="background-color: red">
-      <div class="row p-5 radius">
-
+<div class="container row">
+  <div class="col-12">
+    <form action="/" method="GET" class="col-12 " >
+      <div class="row pt-5 pb-5 radius align-items-end">
+  
         <div class="col d-inline">
             <div class="btn-group">
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select class="form-select" aria-label="Default select example" name="rt">
+                <option selected value="">PILIH RT</option>
+                @foreach ($rts as $rt)
+                  <option value="{{$rt->id}}">{{$rt->id}}</option>
+                @endforeach
               </select>
             </div>
 
           <div class="col d-inline">
             <div class="btn-group">
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select class="form-select" aria-label="Default select example" name="rw">
+                <option selected value=""">PILIH RW</option>
+                @foreach ($rws as $rw)
+                  <option value="{{$rw->id}}">{{$rw->id}}</option>
+                @endforeach
+              </select>
+          </div>
+          <div class="col d-inline">
+            <div class="btn-group">
+              <select class="form-select" aria-label="Default select example" name="dusun">
+                <option selected value="">PILIH DUSUN</option>
+                @foreach ($dusuns as $dusun)
+                  <option value="{{$dusun->id}}">{{$dusun->deskripsi}}</option>
+                @endforeach
               </select>
           </div>
           <div class="col d-inline">
@@ -60,12 +69,12 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
   </div>
 </div>
   <div class="row row-cols-1 row-cols-md-3 g-4 mx-xxl-3 bg-white py-3 radius">
-    <?php FunctionName($jumlah,  $bagian1 ,"fa-solid fa-user-group" ); ?>
-    <?php FunctionName(100, 'Kepala Keluarga',"fa-solid fa-id-card"); ?>
-    <?php FunctionName(400, 'Laki-laki',"fa-solid` fa-mars"); ?>
-    <?php FunctionName(325, 'Perempuan',"fa-solid fa-venus"); ?>
-    <?php FunctionName(29, 'Lahir',"fa-solid fa-face-smile"); ?>
-    <?php FunctionName(20, 'Meninggal',"fa-solid fa-face-frown"); ?>
+    <?php FunctionName($penduduk,  "Penduduk" ,"fa-solid fa-user-group" ); ?>
+    <?php FunctionName($kepala_keluarga, 'Kepala Keluarga',"fa-solid fa-id-card"); ?>
+    <?php FunctionName($laki, 'Laki-laki',"fa-solid fa-mars"); ?>
+    <?php FunctionName($perempuan, 'Perempuan',"fa-solid fa-venus"); ?>
+    <?php FunctionName($lahir, 'Lahir',"fa-solid fa-face-smile"); ?>
+    <?php FunctionName($meninggal, 'Meninggal',"fa-solid fa-face-frown"); ?>
     <div class="col-xl-12">
       <div class="card mb-4 ">
         <div class="card-header">
@@ -85,9 +94,9 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
       'SLTA',
       'DIPLOMA I/II',
       'AKADEMI/D III',
-      'DIPLOMA IV/STRATA I',
-      'STRATA II',
-      'STRATA III'
+      'DIPLOMA IV/STRATA I/STRATA II',
+      'STRATA III',
+      'LAINNYA'
     ];
 
     const data = {
@@ -97,7 +106,7 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
         backgroundColor: 'rgb(120,97,148)',
         borderColor: 'rgb(120,97,148)',
         color: 'rgb(240, 242, 250)',
-        data: [0, 10, 5, 2, 20, 30, 70, 20],
+        data: [{{$tamatsd}}, {{$sltp}}, {{$slta}}, {{$d12}}, {{$d3}}, {{$s1}}, {{$s2}}, {{$s3}}],
       }]
     };
 

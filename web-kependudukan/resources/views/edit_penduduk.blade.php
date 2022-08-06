@@ -244,10 +244,10 @@
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="status_penduduk_baru"
-                                id="exampleRadios2" value="Pindah"
+                                id="exampleRadios2" value="Pindah Masuk"
                                 {{ $penduduk->status_penduduk_baru == 'Pindah' ? 'checked' : '' }}>
                             <label class="form-check-label" for="exampleRadios2">
-                                Pindah
+                                Pindah Masuk
                             </label>
                         </div>
                     </div>
