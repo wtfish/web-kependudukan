@@ -113,13 +113,13 @@ class DatabaseSeeder extends Seeder
             "deskripsi" => "AKADEMI/DIPLOMA III/SARJANA MUDA"
         ]);
         pendidikan::create([
-            "deskripsi" => "DIPLOMA IV/STRATA I"
-        ]);
-        pendidikan::create([
-            "deskripsi" => "STRATA II"
+            "deskripsi" => "DIPLOMA IV/STRATA I/STRATA II"
         ]);
         pendidikan::create([
             "deskripsi" => "STRATA III"
+        ]);
+        pendidikan::create([
+            "deskripsi" => "LAINNYA"
         ]);
 
         //status perkawinan
@@ -127,10 +127,16 @@ class DatabaseSeeder extends Seeder
             "deskripsi" => "BELUM KAWIN"
         ]);
         status_perkawinan::create([
-            "deskripsi" => "KAWIN"
+            "deskripsi" => "KAWIN TERCATAT"
         ]);
         status_perkawinan::create([
-            "deskripsi" => "CERAI HIDUP"
+            "deskripsi" => "KAWIN BELUM TERCATAT"
+        ]);
+        status_perkawinan::create([
+            "deskripsi" => "CERAI HIDUP TERCATAT"
+        ]);
+        status_perkawinan::create([
+            "deskripsi" => "CERAI HIDUP BELUM TERCATAT"
         ]);
         status_perkawinan::create([
             "deskripsi" => "CERAI MATI"

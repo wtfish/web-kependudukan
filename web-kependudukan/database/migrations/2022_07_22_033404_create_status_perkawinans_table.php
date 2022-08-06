@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('status_perkawinans', function (Blueprint $table) {
             $table->id();
-            $table->string("deskripsi",20);
+            $table->string("deskripsi",50);
             $table->timestamps();
         });
     }

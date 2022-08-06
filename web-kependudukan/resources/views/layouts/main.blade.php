@@ -41,12 +41,13 @@
                             <td class=""></td>
                         </tr>
                     </table>
+                    
                 </a>
 
 
                     <div class="sb-sidenav-menu-heading"></div>
 
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" >
                         <table>
                             <tr>
                                 <td rowspan="2">
@@ -60,8 +61,6 @@
                                 <td>admin</td>
                             </tr>
                         </table>
-
-
                     </a>
                     <!---------- Tombol Dashboard ---------->
                             <a class="nav-link {{ ($title==="Dashboard") ? 'active' : '' }} side-nav-color" href="/">
@@ -97,7 +96,7 @@
 
                             <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav" >
-                                    <a class="nav-link side-nav-color" href="/pindah">Pendatang</a>
+                                    <a class="nav-link side-nav-color" href="/pindah">Pindah Masuk</a>
                                     <a class="nav-link side-nav-color" href="/penduduk_keluar">Keluar</a>
                                     <a class="nav-link side-nav-color" href="/kematian">Kematian</a>
 
@@ -114,10 +113,11 @@
 
                     <!------------ /Sirkulasi Penduduk ---------->
                             <div class="sb-sidenav-menu-heading"><hr></div>
-                            <a class="nav-link side-nav-color" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Pengguna Sistem
+                            <a class="nav-link side-nav-color" href="{{ route('register-user') }}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-plus"></i></div>
+                                Register
                             </a>
+
                             <a class="nav-link side-nav-color" href="{{ route('signout') }}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
                                 Log out
@@ -151,17 +151,13 @@
                         SISTEM MANAJEMEN DATA PENDUDUK DESA SUMBEREJO
                     </form>
                     <!-- Navbar-->
-                    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
-            
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register-user') }}">Register</a>
-                        </li>
+                    @guest
+                    <a class="nav-link side-nav-color" href="{{ route('register-user') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-user-plus"></i></div>
+                        Register
+                    </a>
                     @endguest
-                    </ul>
+                    
                 </nav>
 
                 <main>
