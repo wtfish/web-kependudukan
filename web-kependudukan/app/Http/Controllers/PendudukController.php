@@ -185,6 +185,10 @@ class PendudukController extends Controller
         ]);
         return redirect()->route("penduduk");
     }
+    public function hapusPenduduk($id){
+        Penduduk::where("id",'=',$id)->delete();
+        return redirect()->route("penduduk");
+    }
     public function tampilKeluar(){
         // dd( Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereIn("status_penduduk_baru",["Keluar"])->get());
         return view("keluar",[
@@ -221,22 +225,18 @@ class PendudukController extends Controller
             "penduduks" => Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNull("tanggal_kematian")->whereNotIn("id",Penduduk::where("status_penduduk_baru","Keluar")->get("id"))->where("kk","=",$kk)->get()
         ]);
     }
-    public function keluarKK(int $kk){
-        Penduduk::where("kk",(string)$kk)->update([
+    public function keluarKK(string $kk){
+        Penduduk::where("kk",'=',$kk)->update([
             "status_penduduk_baru"=>"Keluar"
         ]);
         return redirect()->route("data_kk");
     }
-
-
-    public function undoKematian(Penduduk $penduduk){
-        $penduduk->tanggal_kematian=null;
-        $penduduk->waktu_kematian=null;
-        $penduduk->keterangan_kematian=null;
-
-        $penduduk->save();
-        return redirect()->route("penduduk");
+    public function hapusKK(string $kk){
+        Penduduk::where("kk",'=',$kk)->delete();
+        return redirect()->route("data_kk");
     }
+
+
     public function importPenduduk(Request $request){
         DB::table('penduduks')->truncate();
         Excel::import(new PendudukImport,$request->file("data_penduduk"));

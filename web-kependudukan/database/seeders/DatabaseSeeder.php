@@ -13,8 +13,10 @@ use App\Models\Penduduk;
 use App\Models\rt;
 use App\Models\rw;
 use App\Models\status_perkawinan;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -304,6 +306,11 @@ class DatabaseSeeder extends Seeder
             "deskripsi" => "MULYOSARI"
         ]);
 
+        User::create([
+            'name' => "desa-admin",
+            'email' => "admin@admin.com",
+            'password' => Hash::make("sumberPisang")
+          ]);
         DB::insert("INSERT INTO pekerjaans(deskripsi) VALUES ('BELUM/TIDAK BEKERJA'), ('MENGURUS RUMAH TANGGA'), ('PELAJAR/MAHASISWA'), ('PENSIUNAN'), ('PNS'), ('TNI'), ('KEPOLISIAN RI'), ('PERDAGANGAN'), ('PETANI/PEKEBUN'), ('PETERNAK'), ('NELAYAN/PERIKANAN'), ('INDUSTRI'), ('KONTRUKSI'), ('TRANSPORTASI'), ('KARYAWAN SWASTA'), ('KARYAWAN BUMN'), ('KARYAWAN BUMD'), ('KARYAWAN HONORER'), ('BURUH HARIAN LEPAS'), ('BURUH TANI/PERKEBUNAN'), ('BURUH NELAYAN/PERIKANAN'), ('BURUH PETERNAKAN'), ('PEMBANTU RUMAH TANGGA'), ('TUKANG CUKUR'), ('TUKANG LISTRIK'), ('TUKANG BATU'), ('TUKANG KAYU'), ('TUKANG SOL SEPATU'), ('TUKANG LAS/PANDAI BESI'), ('TUKANG JAHIT'), ('TUKANG GIGI'), ('PENATA RIAS'), ('PENATA BUSANA'), ('PENATA RAMBUT'), ('MEKANIK'), ('SENIMAN'), ('TABIB'), ('PARAJI'), ('PERANCANG BUSANA'), ('PENTERJEMAH'), ('IMAM MASJID'), ('PENDETA'), ('PASTOR'), ('WARTAWAN'), ('USTADZ/MUBALIGH'), ('JURU MASAK'), ('PROMOTOR ACARA'), ('ANGGOTA DPR RI'), ('ANGGOTA DPD'), ('ANGGOTA BPK'), ('PRESIDEN'), ('WAKIL PRESIDEN'), ('AGGOTA MAHKAMAH KONSTITUSI'), ('AGGOTA KABINET/KEMENTRIAN'), ('DUTA BESAR'), ('GUBERNUR'), ('WAKIL GUBERNUR'), ('BUPATI'), ('WAKIL BUPATI'), ('WALIKOTA'), ('WAKIL WALIKOTA'), ('AGGOTA DPRD PROP'), ('AGGOTA DPRP KAB/KOTA'), ('DOSEN'), ('GURU'), ('PILOT'), ('PENGACARA'), ('NOTARIS'), ('ARSITEK'), ('AKUNTAN'), ('KONSULTAN'), ('DOKTER'), ('BIDAN'), ('PERAWAT'), ('APOTEKER'), ('PSIKIATER/PSIKOLOG'), ('PENYIAR TELEVISI'), ('PENYIAR RADIO'), ('PELAUT'), ('PENELITI'), ('SOPIR'), ('PIALANG'), ('PARANORMAL'), ('PEDAGANG'), ('PERANGKAT DESA'), ('KEPALA DESA'), ('BIARAWATI'), ('WIRASWASTA');", );
 
     }
