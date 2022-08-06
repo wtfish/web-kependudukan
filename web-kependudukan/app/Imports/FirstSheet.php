@@ -20,9 +20,9 @@ class FirstSheet implements ToModel, WithStartRow,WithCalculatedFormulas
     public function model(array $row)
     {
         return new Penduduk([
-            "kk" => $row[1],
+            "kk" => (string)$row[1],
             "validasi" => $row[2],
-            "nik" => $row[3],
+            "nik" => (string)$row[3],
             "nama" => $row[4],
             "tempat_lahir" => $row[5],
             "tanggal_lahir" => ($row[6] == null ? $row[6] : Carbon::createFromDate(1900,1,1)->addDay((int)$row[6]-2)),
