@@ -22,7 +22,7 @@ class UserPindahExport extends DefaultValueBinder implements WithCustomValueBind
     // }
     public function view():View{
         return view("export.penduduk",[
-            "penduduks" => Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->where("status_penduduk_baru","Pindah")->get()
+            "penduduks" => Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->where("status_penduduk_baru","Pindah Masuk")->get()
         ]);
     }
     public function bindValue(CellCell $cell, $value)

@@ -84,7 +84,7 @@
                  {{-- card ketiga --}}
                  <div class="card d-inline-block ms-5" style="width: 18rem;">
                     <div class="card-body">
-                      <h5 class="card-title text-center">Penduduk Pindah</h5>
+                      <h5 class="card-title text-center">Penduduk Pindah Masuk</h5>
                       <hr>
                       <p class="card-text text-center">Penduduk yang masuk desa sumberrejo dengan pindah dari daerah lain</p>
                     </div>

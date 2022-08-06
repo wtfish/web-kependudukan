@@ -55,7 +55,7 @@
 
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label " for="nama">Nama</label></div>
-                    <div class="col-8 "><input class="form-control @error("nama") is-invalid @enderror" id="nama" style="width: 50%" type="text" placeholder="Nama" name="nama"  value="{{old("nik")}}"></div>
+                    <div class="col-8 "><input class="form-control @error("nama") is-invalid @enderror" id="nama" style="width: 50%" type="text" placeholder="Nama" name="nama"  value="{{old("nama")}}"></div>
                     @error("nama")
                         <div class="col-4"></div>
                         <div class="col-4">
@@ -92,8 +92,8 @@
                     <div class="col-8 ">
                         <select style="width: 25%" id="inputGroupSelect01"   name="kelamin" class="form-select @error("kelamin") is-invalid @enderror" value="{{old("kelamin")}}">
                             <option selected disabled value="">Choose...</option>
-                            <option value=L>Laki-Laki</option>
-                            <option value=P>Perempuan</option>
+                            <option value=L {{old("kelamin") == "L" ? "selected":""}}>Laki-Laki</option>
+                            <option value=P {{old("kelamin") == "P" ? "selected":""}}>Perempuan</option>
                         </select>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                 <div class="row my-3">
                     <div class="col-4 ">RT</div>
                     <div class="col-8 ">
-                        <input id="myNumber" name="rt" type="number" min="1" max="71" class="form-control" style="width: 25%">
+                        <input id="myNumber" name="rt" type="number" class="form-control @error("rt") is-invalid @enderror" style="width: 25%" max="71" min="1" value="{{old("rt")}}">
                         @error("rt")
                         <div class="col-4"></div>
                         <div class="col-4">
@@ -145,7 +145,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="agama" required  class="form-select @error("agama") is-invalid @enderror">
                             <option selected disabled value="">PILIH AGAMA</option>
                             @foreach ($agama as $item)
-                                <option value="{{$item->deskripsi}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}" {{old("agama") == $item->deskripsi ? "selected":""}}>{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -158,7 +158,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="pendidikan" required  class="form-select">
                             <option selected disabled value="">PILIH PENDIDIKAN</option>
                             @foreach ($pendidikan as $item)
-                                <option value="{{$item->deskripsi}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}" {{old("pendidikan") == $item->deskripsi ?  "selected":""}}> {{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -171,7 +171,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="pekerjaan" required  class="form-select">
                             <option selected disabled value="">PILIH PEKERJAAN</option>
                             @foreach ($pekerjaan as $item)
-                                <option value="{{$item->deskripsi}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}" {{old("pekerjaan") == $item->deskripsi ? "selected":""}}>{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -185,7 +185,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="hubungan_keluarga" required  class="form-select">
                             <option selected disabled value="">PILIH HUB-KELUARGA</option>
                             @foreach ($hubungan as $item)
-                                <option value="{{$item->deskripsi}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}" {{old("hubungan_keluarga") == $item->deskripsi ? "selected":""}}>{{$item->deskripsi}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -198,7 +198,7 @@
                         <select style="width: 25%" id="inputGroupSelect01" name="status_perkawinan" id="status-perkawinan"  required class="form-select">
                             <option selected disabled value="">PILIH STATUS</option>
                             @foreach ($status as $item)
-                                <option value="{{$item->deskripsi}}">{{$item->deskripsi}}</option>
+                                <option value="{{$item->deskripsi}}" {{old("status_perkawinan") == $item->deskripsi ? "selected":""}}>{{$item->deskripsi}}</option>
                             @endforeach>
                         </select>
                     </div>
@@ -221,14 +221,24 @@
                     </div>
                 </div>
 
-                
+                <div class="row">
+                    <div class="col-12 background text-black text-center " style="">NIK Orangtua</div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Nik Ibu</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="NIK IBU" name="nik_ibu"  value="{{old("nik_ibu")}}"></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Nik Ayah</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="NIK AYAH" name="nik_ayah"  value="{{old("nik_ayah")}}"></div>
+                </div>
 
                 <div class="row">
                     <div class="col-12 background text-black text-center " style="">Kelahiran</div>
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label" for="akte_kelahiran">Nomer Akte Kelahiran</label></div>
-                    <div class="col-8 "><input class="form-control" style="width: 50%" type="text" placeholder="Nomer Akte Kelahiran" name="akte_kelahiran" id="akte_kelahiran"></div>
+                    <div class="col-8 "><input class="form-control" style="width: 50%" type="text" placeholder="Nomer Akte Kelahiran" name="akte_kelahiran" id="akte_kelahiran" value="{{old("akte_kelahiran")}}"></div>
                 </div>
                 <div class="row">
                     <div class="col-12 background text-black text-center " style="">Pernikahan</div>
@@ -236,38 +246,55 @@
                 <div class="row my-3">
                     <div class="col-4 "><label for="tanggal_nikah" class="form-label">Tanggal nikah</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="date" name="tanggal_nikah" class="form-control" id="tanggal_nikah">
+                        <input style="width: 50%" type="date" name="tanggal_nikah" class="form-control" id="tanggal_nikah" value="{{old("tanggal_nikah")}}">
                     </div>
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label for="no_buku_nikah" class="form-label">No buku nikah</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="text" name="no_buku_nikah" class="form-control">
+                        <input style="width: 50%" type="text" name="no_buku_nikah" class="form-control" value="{{old("no_buku_nikah")}}">
                     </div>
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label for="kua" class="form-label">KUA</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="text" name="kua" class="form-control">
+                        <input style="width: 50%" type="text" name="kua" class="form-control" value="{{old("kua")}}">
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-12 background text-black text-center " style="">Perceraian</div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label for="tanggal_nikah" class="form-label">Tanggal cerai</label></div>
+                    <div class="col-8 ">
+                        <input style="width: 50%" type="date" name="tanggal_cerai" class="form-control" id="tanggal_cerai" value="{{old("tanggal_cerai")}}">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label for="no_akta_cerai" class="form-label">No akta perceraian</label></div>
+                    <div class="col-8 ">
+                        <input style="width: 50%" type="text" name="no_akta_cerai" id="no_akta_cerai" class="form-control" value="{{old("no_akta_cerai")}}">
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-12 background text-black text-center " style="">Kematian</div>
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label for="tanggal_kematian" class="form-label">Tanggal Kematian</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="date" id="tanggal_kematian" name="tanggal_kematian" class="form-control">
+                        <input style="width: 50%" type="date" id="tanggal_kematian" name="tanggal_kematian" class="form-control" value="{{old("tanggal_kematian")}}">
                     </div>
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label for="waktu_kematian" class="form-label">Waktu Kematian</label></div>
                     <div class="col-8 ">
-                        <input style="width: 50%" type="time" id="waktu_kematian" name="waktu_kematian" class="form-control">
+                        <input style="width: 50%" type="time" id="waktu_kematian" name="waktu_kematian" class="form-control" value="{{old("waktu_kematian")}}">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 background text-black text-center " style="">Kemiskinan</div>
+                    <div class="col-12 background text-black text-center" style="">Kemiskinan</div>
                 </div>
                 <div class="row my-3">
                     <div class="col-4 "><label class="form-label " for="kemiskinan">Keterangan</label></div>

@@ -28,8 +28,7 @@ class CustomAuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/')
-                        ->withSuccess('Success message');
+            return redirect()->route("dashboard");
 
         }
 

@@ -55,6 +55,7 @@ th{
             <th rowspan="2" style="text-align: center;">GOLONGAN DARAH</th>
             <th rowspan="2" style="text-align: center;">PENYANDANG CACAT</th>
             <th rowspan="2" style="text-align: center;">KEWARGANEGARAAN</th>
+            <th rowspan="2" style="text-align: center;">STATUS PENDUDUK BARU</th>
         </tr>
         <tr>
             <td style="text-align: center;">IBU</td>
@@ -120,7 +121,8 @@ th{
                 <td>{{$penduduk->nomor_akta_cerai}}</td>
                 <td>{{$penduduk->golongan_darah}}</td>
                 <td>{{$penduduk->penyandang_cacat}}</td>
-                <td>{{$penduduk->kewarganegaraan}}</td>
+                <td>WNI</td>
+                <td>{{$penduduk->status_penduduk_baru}}</td>
             </tr>
 
         @endforeach

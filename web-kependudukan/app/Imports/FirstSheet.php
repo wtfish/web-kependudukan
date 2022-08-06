@@ -56,7 +56,8 @@ class FirstSheet implements ToModel, WithStartRow,WithCalculatedFormulas
             "nomor_akta_cerai" => $row[34],
             "golongan_darah" => $row[35],
             "penyandang_cacat" => $row[36],
-            "kewarganegaraan" => $row[37]
+            "kewarganegaraan" => $row[37],
+            "status_penduduk_baru" =>$row[38]
         ]);
     }
     public function startRow(): int

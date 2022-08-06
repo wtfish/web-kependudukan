@@ -253,6 +253,17 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-12 background text-black text-center " style="">NIK Orangtua</div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Nik Ibu</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="NIK IBU" name="nik_ibu"  value="{{ $penduduk->nik_ibu }}"></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Nik Ayah</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="NIK AYAH" name="nik_ayah"  value="{{ $penduduk->nik_ayah }}"></div>
+                </div>
 
 
                 <div class="row">
@@ -288,6 +299,23 @@
                             value="{{ $penduduk->kua }}">
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-12 background text-black text-center " style="">Perceraian</div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label for="tanggal_nikah" class="form-label">Tanggal cerai</label></div>
+                    <div class="col-8 ">
+                        <input style="width: 50%" type="date" name="tanggal_cerai" class="form-control" id="tanggal_cerai" value="{{$penduduk->tanggal_cerai}}">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label for="no_akta_cerai" class="form-label">No akta perceraian</label></div>
+                    <div class="col-8 ">
+                        <input style="width: 50%" type="text" name="no_akta_cerai" id="no_akta_cerai" class="form-control" value="{{$penduduk->nomor_akta_cerai}}">
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-12 background text-black text-center " style="">Kematian</div>
                 </div>

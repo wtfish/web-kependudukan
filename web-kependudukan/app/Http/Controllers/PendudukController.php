@@ -70,7 +70,7 @@ class PendudukController extends Controller
             "kelamin" => "required",
             "nama_ayah" => "required",
             "nama_ibu" => 'required',
-            "rt" => "required",
+            "rt" => "required|max:71|min:1",
             "agama" => "required",
             "pendidikan" => "required",
             "pekerjaan" => "required",
@@ -103,7 +103,11 @@ class PendudukController extends Controller
             "tanggal_kematian" => $request["tanggal_kematian"],
             "waktu_kematian" => $request["waktu_kematian"],
             "keterangan_kematian"=>(($request["tanggal_kematian"] != null) ? ($validatedData["kelamin"]!=null ? ($validatedData["kelamin"]=="L" ? "MDL" : "MDP" ) : "MD" ) : null),
-            "kemiskinan" => $request["kemiskinan"]
+            "kemiskinan" => $request["kemiskinan"],
+            "nik_ibu"=>$request["nik_ibu"],
+            "nik_ayah"=>$request["nik_ayah"],
+            "tanggal_cerai"=>$request["tanggal_cerai"],
+            "nomor_akta_cerai"=>$request["no_akta_cerai"],
         ]);
         return redirect()->route("penduduk");
 

@@ -65,10 +65,21 @@
         <div class="col-8 ">: {{$penduduk->status_penduduk_baru}}</div>
     </div>
     <div class="row border-bottom">
+        <div class="col-12 text-center"><strong>NIK ORANG TUA</strong></div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-4 ">NIK Ibu</div>
+        <div class="col-8 ">: {{($penduduk->nik_ibu == ""? "-" : $penduduk->nik_ibu)}}</div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-4 ">NIK Ayah</div>
+        <div class="col-8 ">: {{($penduduk->nik_ayah == ""? "-" : $penduduk->nik_ayah)}}</div>
+    </div>
+    <div class="row border-bottom">
         <div class="col-12 text-center"><strong>KELAHIRAN</strong></div>
     </div>
     <div class="row border-bottom">
-        <div class="col-4 ">Akte Kelahiran</div>
+        <div class="col-4 ">Nomor Akte Kelahiran</div>
         <div class="col-8 ">: {{($penduduk->akte_kelahiran == ""? "-" : $penduduk->akte_kelahiran)}}</div>
     </div>
 
@@ -88,6 +99,17 @@
     <div class="row border-bottom">
         <div class="col-4 ">KUA</div>
         <div class="col-8 ">: {{($penduduk->kua == ""? "-" : $penduduk->kua)}}</div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-12 text-center"><strong>PERCERAIAN</strong></div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-4 ">Tanggal Cerai</div>
+        <div class="col-8 ">: {{($penduduk->tanggal_cerai == ""? "-" : $penduduk->tanggal_cerai)}}</div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-4 ">No Akta Cerai</div>
+        <div class="col-8 ">: {{($penduduk->nomor_akta_cerai == ""? "-" : $penduduk->nomor_akta_cerai)}}</div>
     </div>
 
     <div class="row border-bottom">
