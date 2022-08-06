@@ -57,7 +57,7 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("dashboard");//->withSuccess('have signed-in');
+        return redirect("dashboard")->withSuccess('have signed-in');
     }
 
 
@@ -77,7 +77,7 @@ class CustomAuthController extends Controller
             return view('dashboard');
         }
 
-        return redirect("login");//->withSuccess('are not allowed to access');
+        return redirect("login")->withSuccess('are not allowed to access');
     }
 
 

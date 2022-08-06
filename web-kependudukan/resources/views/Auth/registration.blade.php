@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('body')
+@section('body2')
     <main class="signup-form">
         <div class="cotainer">
             <div class="row justify-content-center">
