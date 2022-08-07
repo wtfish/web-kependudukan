@@ -29,6 +29,7 @@
 
       </div>
       <div >
+        <?php $ind=(request("page")=="" || request("page")== 1 ? 0 : (int)(request("page")-1)*15) ?>
         <table class="table table-striped-columns">
           <thead>
             <tr class="text-center">
@@ -135,9 +136,11 @@
                 <a href="#"><img src="/assets/logoDelete.png"></a>
               </td>
             </tr> --}}
+
+                        
                             @foreach ($penduduks as $penduduk)
                                 <tr class="text-center">
-                                    <td>{{ $penduduk->id }}</td>
+                                    <td>{{++$ind}}</td>
                                     <td>{{ $penduduk->kk }}</td>
                                     <td>{{ $penduduk->nik }}</td>
                                     <td>{{ $penduduk->nama }}</td>

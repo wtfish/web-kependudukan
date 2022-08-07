@@ -8,34 +8,29 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>{{ $title }}</title>
-        <link rel="icon" type="image/png" href="assets/logo_Malang.png" sizes = "20x5" >
+        <link rel="icon" type="image/png" href="/assets/logo_Malang.png" sizes = "20x5" >
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         <link href="/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="background">
-
         <div id="layoutSidenav">
-
             @auth()
-
-
-
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion purp" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <!-- Navbar Brand-->
-                    <a class="navbar-brand text-dark bg-white radius" href="index.html">
+                    <a class="navbar-brand text-dark bg-white radius" href="/">
                         <table>
                         <tr>
-                            <td rowspan="3">
-                                <div class="sb-nav-link-icon"><img src="/assets/logo1.png" alt="" width="70px" ></div>
+                            <td rowspan="3 mr-3">
+                                <div class="sb-nav-link-icon mr-3"><img src="/assets/kab_malang.png" alt="" width="50px" ></div>
                             </td>
-                            <td class="">dataSumberejo</td>
+                            <td class="">Kependudukan</td>
                         </tr>
                         <tr>
-                            <td class="fs-6 text border-top text-center">Dashboard</td>
+                            <td class="fs-6 text border-top text-center">Sumberejo</td>
                         </tr>
                         <tr>
                             <td class=""></td>

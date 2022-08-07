@@ -245,7 +245,7 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="status_penduduk_baru"
                                 id="exampleRadios2" value="Pindah Masuk"
-                                {{ $penduduk->status_penduduk_baru == 'Pindah' ? 'checked' : '' }}>
+                                {{ $penduduk->status_penduduk_baru == 'Pindah Masuk' ? 'checked' : '' }}>
                             <label class="form-check-label" for="exampleRadios2">
                                 Pindah Masuk
                             </label>
@@ -334,13 +334,27 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 background text-black text-center " style="">Kemiskinan</div>
+                    <div class="col-12 background text-black text-center" style="">Lain-lain</div>
                 </div>
                 <div class="row my-3">
-                    <div class="col-4 "><label class="form-label " for="kemiskinan">Keterangan</label></div>
-                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text"
-                            placeholder="Keterangan kemiskinan" name="kemiskinan" value="{{ $penduduk->kemiskinan }}">
-                    </div>
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Keterangan Kemiskinan</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Keterangan kemiskinan" name="kemiskinan"  value="{{$penduduk->kemiskinan}}"></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Nomor BPJS</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Nomor Bpjs" name="bpjs"  value="{{$penduduk->nomor_bpjs}}"></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Jabatan</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Jabatan" name="jabatan"  value="{{$penduduk->jabatan}}"></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Telepon</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Nomor telepon" name="telepon"  value="{{$penduduk->telepon}}"></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Nomor Ijazah</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Nomor Ijazah" name="ijazah"  value="{{$penduduk->nomor_ijazah}}"></div>
                 </div>
 
         </div>

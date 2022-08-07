@@ -91,7 +91,7 @@
                     <div class="col-4 ">Jenis Kelamin</div>
                     <div class="col-8 ">
                         <select style="width: 25%" id="inputGroupSelect01"   name="kelamin" class="form-select @error("kelamin") is-invalid @enderror" value="{{old("kelamin")}}">
-                            <option selected disabled value="">Choose...</option>
+                            <option selected disabled value="">PILIH JENIS KELAMIN</option>
                             <option value=L {{old("kelamin") == "L" ? "selected":""}}>Laki-Laki</option>
                             <option value=P {{old("kelamin") == "P" ? "selected":""}}>Perempuan</option>
                         </select>
@@ -294,11 +294,27 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 background text-black text-center" style="">Kemiskinan</div>
+                    <div class="col-12 background text-black text-center" style="">Lain-lain</div>
                 </div>
                 <div class="row my-3">
-                    <div class="col-4 "><label class="form-label " for="kemiskinan">Keterangan</label></div>
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Keterangan Kemiskinan</label></div>
                     <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Keterangan kemiskinan" name="kemiskinan"  value="{{old("kemiskinan")}}"></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Nomor BPJS</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Nomor Bpjs" name="bpjs"  value="{{old("bpjs")}}"></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Jabatan</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Jabatan" name="jabatan"  value="{{old("jabatan")}}"></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Telepon</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Nomor telepon" name="telepon"  value="{{old("telepon")}}"></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-4 "><label class="form-label " for="kemiskinan">Nomor Ijazah</label></div>
+                    <div class="col-8 "><input class="form-control" id="kemiskinan" style="width: 50%" type="text" placeholder="Nomor Ijazah" name="ijazah"  value="{{old("ijazah")}}"></div>
                 </div>
 
         </div>

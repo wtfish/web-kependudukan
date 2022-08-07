@@ -31,7 +31,7 @@ class PendudukController extends Controller
     {
         $data=Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNull("tanggal_kematian")->whereNotIn("id",Penduduk::where("status_penduduk_baru","Keluar")->get("id"));
         if(request("search")){
-            $data->where("NIK","like","%".request("search")."%")->orWhere("kk","like","%".request("search")."%")->orWhere("nama","like","%".request("search")."%");
+            $data->whereIn("id",Penduduk::where("NIK","like","%".request("search")."%")->orWhere("kk","like","%".request("search")."%")->orWhere("nama","like","%".request("search")."%")->get("id"));
         }
         // dd(Penduduk::);
         return view(
@@ -108,6 +108,10 @@ class PendudukController extends Controller
             "nik_ayah"=>$request["nik_ayah"],
             "tanggal_cerai"=>$request["tanggal_cerai"],
             "nomor_akta_cerai"=>$request["no_akta_cerai"],
+            "nomor_bpjs"=>$request["bpjs"],
+            "jabatan"=>$request["jabatan"],
+            "telepon"=>$request["telepon"],
+            "nomor_ijazah"=>$request["ijazah"],
         ]);
         return redirect()->route("penduduk");
 
@@ -179,7 +183,15 @@ class PendudukController extends Controller
             "tanggal_kematian" => $request["tanggal_kematian"],
             "waktu_kematian" => $request["waktu_kematian"],
             "keterangan_kematian" => (($request["tanggal_kematian"] != null) ? ($validatedData["kelamin"]!=null ? ($validatedData["kelamin"]=="L" ? "MDL" : "MDP" ) : "MD" ) : null),
-            "kemiskinan" => $request["kemiskinan"]
+            "kemiskinan" => $request["kemiskinan"],
+            "nik_ibu"=>$request["nik_ibu"],
+            "nik_ayah"=>$request["nik_ayah"],
+            "tanggal_cerai"=>$request["tanggal_cerai"],
+            "nomor_akta_cerai"=>$request["no_akta_cerai"],
+            "nomor_bpjs"=>$request["bpjs"],
+            "jabatan"=>$request["jabatan"],
+            "telepon"=>$request["telepon"],
+            "nomor_ijazah"=>$request["ijazah"],
         ]);
          return redirect()->route("penduduk");
     }
@@ -187,7 +199,7 @@ class PendudukController extends Controller
         Penduduk::where("id",$penduduk->id)->update([
             "status_penduduk_baru"=>"Keluar"
         ]);
-        return redirect()->route("penduduk");
+        return redirect()->back();
     }
     public function hapusPenduduk($id){
         Penduduk::where("id",'=',$id)->delete();
@@ -217,9 +229,13 @@ class PendudukController extends Controller
         ]);
     }
     public function tampilKk(){
+        $data=Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNull("tanggal_kematian")->whereNotIn("id",Penduduk::where("status_penduduk_baru","Keluar")->get("id"))->where("hubungan_keluarga","=","KEPALA KELUARGA")->orderBy('rt_id', 'asc')->orderBy('kk', 'asc');
+        if(request("search")){
+            $data->whereIn("id",Penduduk::where("NIK","like","%".request("search")."%")->orWhere("kk","like","%".request("search")."%")->orWhere("nama","like","%".request("search")."%")->get("id"));
+        }
         return view("data_kk",[
             "title"=>"Data KK",
-            "kks" => Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNull("tanggal_kematian")->whereNotIn("id",Penduduk::where("status_penduduk_baru","Keluar")->get("id"))->where("hubungan_keluarga","=","KEPALA KELUARGA")->orderBy('rt_id', 'asc')->orderBy('kk', 'asc')->get()
+            "kks" => $data->paginate(15),
         ]);
     }
     public function detailKk(int $kk){

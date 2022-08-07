@@ -35,7 +35,7 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
               <select class="form-select" aria-label="Default select example" name="rt">
                 <option selected value="">PILIH RT</option>
                 @foreach ($rts as $rt)
-                  <option value="{{$rt->id}}">{{$rt->id}}</option>
+                  <option value="{{$rt->id}}" {{request("rt")==$rt->id ? "selected" : ""}}>{{$rt->id}}</option>
                 @endforeach
               </select>
             </div>
@@ -43,9 +43,9 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
           <div class="col d-inline">
             <div class="btn-group">
               <select class="form-select" aria-label="Default select example" name="rw">
-                <option selected value=""">PILIH RW</option>
+                <option selected value="">PILIH RW</option>
                 @foreach ($rws as $rw)
-                  <option value="{{$rw->id}}">{{$rw->id}}</option>
+                  <option value="{{$rw->id}}" {{request("rw")==$rw->id ? "selected" : ""}}>{{$rw->id}}</option>
                 @endforeach
               </select>
           </div>
@@ -54,7 +54,7 @@ function FunctionName($jumlah = 0, $judul = null, $gambar = null )
               <select class="form-select" aria-label="Default select example" name="dusun">
                 <option selected value="">PILIH DUSUN</option>
                 @foreach ($dusuns as $dusun)
-                  <option value="{{$dusun->id}}">{{$dusun->deskripsi}}</option>
+                  <option value="{{$dusun->id}}" {{request("dusun")==$dusun->id ? "selected" : ""}}>{{$dusun->deskripsi}}</option>
                 @endforeach
               </select>
           </div>
