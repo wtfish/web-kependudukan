@@ -229,16 +229,16 @@ class PendudukController extends Controller
         ]);
     }
     public function tampilKk(){
-        $data=Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNull("tanggal_kematian")->whereNotIn("id",Penduduk::where("status_penduduk_baru","Keluar")->get("id"))->where("hubungan_keluarga","=","KEPALA KELUARGA")->orderBy('rt_id', 'asc')->orderBy('kk', 'asc');
+        $data=Penduduk::with(["rt", "rt.rw", "rt.rw.dusun"])->whereNull("tanggal_kematian")->whereNotIn("id",Penduduk::where("status_penduduk_baru","Keluar")->get("id"))->where("hubungan_keluarga","=","KEPALA KELUARGA")->orderBy('rt_id', 'asc');
         if(request("search")){
-            $data->whereIn("id",Penduduk::where("NIK","like","%".request("search")."%")->orWhere("kk","like","%".request("search")."%")->orWhere("nama","like","%".request("search")."%")->get("id"));
+            $data->whereIn("id",Penduduk::where("kk","like","%".request("search")."%")->orWhere("nama","like","%".request("search")."%")->get("id"));
         }
         return view("data_kk",[
             "title"=>"Data KK",
             "kks" => $data->paginate(15),
         ]);
     }
-    public function detailKk(int $kk){
+    public function detailKk($kk){
         return view("detail_kk",[
             "title"=>"Data KK",
             "kk"=>$kk,

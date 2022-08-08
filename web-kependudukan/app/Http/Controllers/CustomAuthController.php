@@ -14,7 +14,7 @@ class CustomAuthController extends Controller
     public function index()
     {
         return view('Auth.login',[
-            "title"=>"Penduduk Meninggal"
+            "title"=>"Login"
         ]);
     }
 
@@ -31,8 +31,11 @@ class CustomAuthController extends Controller
             return redirect()->route("dashboard");
 
         }
+        else{
+            return redirect("login")->with(['success' => 'Login error']);
+        }
 
-        return redirect("login")->with(['success' => 'Login error']);
+        return redirect("login");
     }
 
 

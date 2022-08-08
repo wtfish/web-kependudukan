@@ -13,7 +13,8 @@
                       <p class="card-text text-center">Semua penduduk tanpa tekecuali akan terlibat dalam aksi di bawah ini</p>
                     </div>
                     <ul class="list-group list-group-flush text-center">
-                      <li class="list-group-item"><!-- Button trigger modal -->
+                      {{-- comment start here --}}
+                      {{-- <li class="list-group-item"><!-- Button trigger modal -->
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                             class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
@@ -50,7 +51,8 @@
                               </form>
                             </div>
                           </div>
-                        </div></li>
+                        </div></li>  --}}
+                        {{-- comment end here --}}
                       <li class="list-group-item">
                         <a href="/download_all"><button class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
                             <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
@@ -86,7 +88,7 @@
                     <div class="card-body">
                       <h5 class="card-title text-center">Penduduk Pindah Masuk</h5>
                       <hr>
-                      <p class="card-text text-center">Penduduk yang masuk desa sumberrejo dengan pindah dari daerah lain</p>
+                      <p class="card-text text-center">Penduduk daerah lain yang masuk desa sumberejo</p>
                     </div>
                     <ul class="list-group list-group-flush text-center">
                       

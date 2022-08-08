@@ -130,12 +130,28 @@
     </div>
 
     <div class="row border-bottom">
-        <div class="col-12 text-center"><strong>KEMISKINAN</strong></div>
+        <div class="col-12 text-center"><strong>LAIN-LAIN</strong></div>
     </div>
 
     <div class="row border-bottom">
-        <div class="col-4 ">Keterangan</div>
-        <div class="col-8 ">: {{($penduduk->kemiskinan == "" ? "-" : $penduduk->kemiskinan)}}</div>
+        <div class="col-4 ">Keterangan Kematian</div>
+        <div class="col-8 ">: {{($penduduk->nomor_bpjs== "" ? "-" : $penduduk->kemiskinan)}}</div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-4 ">Nomor BPJS</div>
+        <div class="col-8 ">: {{($penduduk->nomor_bpjs == "" ? "-" : $penduduk->nomor_bpjs)}}</div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-4 ">Jabatan</div>
+        <div class="col-8 ">: {{($penduduk->jabatan == "" ? "-" : $penduduk->jabatan)}}</div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-4 ">Telepon</div>
+        <div class="col-8 ">: {{($penduduk->telepon == "" ? "-" : $penduduk->telepon)}}</div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-4 ">Ijazah</div>
+        <div class="col-8 ">: {{($penduduk->nomor_ijazah == "" ? "-" : $penduduk->nomor_ijazah)}}</div>
     </div>
     
 
